@@ -10,7 +10,7 @@ var Eric = {
       ['0', 'Insert', 'Self Close'],
       ['Delete', 'Insert', 'Autoclose Toggle'],
       ['Escape', '---', 'Time Display Toggle'],
-      ['Alt', '---', 'Execute Toggle'],
+      ['`', '~', 'Execute Toggle'],
       ['Enter', '---', 'Execute'],
     ],
     shortcuts: [
