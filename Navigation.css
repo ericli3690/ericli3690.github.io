@@ -36,7 +36,7 @@ h1 {
   font-size: 24px;
   font-weight: bold;
   background-color: #FA807270;
-  width: 310px;
+  width: inherit;
   text-align: center;
   border-left: 6px solid #bf242a90;
   border-right: 6px solid #bf242a90;
@@ -47,12 +47,8 @@ h3 {
   border-left: 4px solid #bf242a90;
   border-right: 4px solid #bf242a90;
   background-color: #FA807270;
-  width: 381px;
+  width: inherit;
   padding-top: 9px;
-}
-
-#consolePrintTitle {
-  width: 444px;
 }
 
 .leftpad {
@@ -61,8 +57,11 @@ h3 {
 
 .grid {
   display: grid;
-  height: 600px;
-  width: 1300px;
+  /*   vh and vw grab the screen size, 16px accounts for the body padding, and 2px removes scrollbars... somehow   */
+  height: calc(100vh - 16px - 2px);
+  width: calc(100vw - 16px - 30px - 2px);
+  min-height: calc(625px - 16px - 2px);
+  min-width: calc(1366px - 16px - 30px - 2px);
   grid-template: auto / 10% 25% 30% 35%;
   column-gap: 10px;
 }
