@@ -91,6 +91,8 @@ function updateTime() {
   var hoursWith0;
   if (hoursIn12 < 10) {
     hoursWith0 = '0' + date.getHours();
+  } else {
+    hoursWith0 = hoursIn12;
   }
   var minutesWith0;
   if (date.getMinutes() < 10) {
@@ -232,7 +234,7 @@ function keyPressed(event) {
     for (var i = 0; i < user.keybindings.shortcuts.length; i++) {
       var currentInspectedKey = user.keybindings.shortcuts[i];
       if (event.key == currentInspectedKey[0] || event.key == currentInspectedKey[1]) {
-        console.log('Key: ' + event.key + ' - ' + currentInspectedKey[3]); //***, 2?
+        console.log('Key: ' + event.key + ' - ' + currentInspectedKey[3]);
         printConsole('Key: ' + event.key + ' - ' + currentInspectedKey[3]);
         for (var j = 0; j < currentInspectedKey[3].length; j++) {
           if (qExecute == true) {
