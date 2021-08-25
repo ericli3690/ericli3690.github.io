@@ -20,7 +20,7 @@ var Eric = {
       ['4', '---', 'Powerschool', ['https://sis.cbe.ab.ca/public/home.html']],
       ['z', '---', 'Chinese Resources', ['https://translate.google.com/', 'https://www.purpleculture.net/chinese-english-dictionary/?word=', 'https://www.purpleculture.net/chinese-handwriting-input/', 'https://www.chinese-tools.com/tools/sinograms.html?r']],
       ['x', '---', 'Google Translate', ['https://translate.google.com/']],
-      ['c', '---', 'Chinese Dictionary', ['https://www.purpleculture.net/chinese-english-dictionary/?word=']];
+      ['c', '---', 'Chinese Dictionary', ['https://www.purpleculture.net/chinese-english-dictionary/?word=']],
       ['v', '---', 'Chinese Type Input', ['https://www.purpleculture.net/chinese-handwriting-input/']],
       ['b', '---', 'Chinese Radical Search', ['https://www.chinese-tools.com/tools/sinograms.html?r']],
       ['a', '---', 'SoundCloud', ['https://soundcloud.com/you/sets']],
