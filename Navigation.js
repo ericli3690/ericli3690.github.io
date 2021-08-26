@@ -4,7 +4,8 @@
 //CUSTOMIZATION
 var Eric = {
   name: 'Eric',
-  preferredTimeSyntax: 'MDY',
+  preferredDateSyntax: 'MDY',
+  preferredTimeSyntax: 12,
   keybindings: {
     key: [
       ['0', 'Insert', 'Self Close'],
@@ -33,7 +34,7 @@ var Eric = {
 
 var Guest = {
   name: 'Guest',
-  preferredTimeSyntax: 'MDY',
+  preferredDateSyntax: 'MDY',
   keybindings: {
     key: [
       ['0', 'Insert', 'Self Close'],
@@ -78,43 +79,62 @@ printConsole('<strong>Autoclose will only function if Navigation was opened via 
 
 //time
 function updateTime() {
-  var date = new Date();
-  var hoursIn12;
-  if (date.getHours() > 12) {
-    hoursIn12 = date.getHours() - 12;
-  } else {
-    hoursIn12 = date.getHours();
-  }
+  //grab target
   var interpretTime = document.getElementById('interpretTime');
+  //basic info
   var months = ['JANUARY', 'FEBRUARY', 'MARCH', 'APRIL', 'MAY', 'JUNE', 'JULY', 'AUGUST', 'SEPTEMBER', 'OCTOBER', 'NOVEMBER', 'DECEMBER'];
   var daysOfWeek = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
-  var hoursWith0;
-  if (hoursIn12 < 10) {
-    hoursWith0 = '0' + date.getHours();
+  //make date
+  var date = new Date();
+  //hours
+  var hoursWithEdit;
+  var amOrPm = '';
+  if (user.preferredTimeSyntax == 12) {
+    //twelve hour time
+    if (date.getHours() > 12) {
+      hoursWithEdit = date.getHours() - 12;
+      amOrPm = 'PM';
+    } else {
+      hoursWithEdit = date.getHours();
+      amOrPm = 'AM';
+    }
+  } else if (user.preferredTimeSyntax == 24) {
+    //twenty four hour time
+    if (date.getHours() < 10) {
+      hoursWithEdit = '0' + date.getHours();
+    } else {
+      hoursWithEdit = date.getHours();
+    }
   } else {
-    hoursWith0 = hoursIn12;
+    //not 12 nor 24
+    alert('# ERROR - AT CUSTOMIZATION, AT USER, AT PREFERREDTIMESYNTAX -- INVALID INPUT');
   }
+  //minutes
   var minutesWith0;
   if (date.getMinutes() < 10) {
     minutesWith0 = '0' + date.getMinutes();
   } else {
     minutesWith0 = date.getMinutes();
   }
+  //seconds
   var secondsWith0;
   if (date.getSeconds() < 10) {
     secondsWith0 = '0' + date.getSeconds();
   } else {
     secondsWith0 = date.getSeconds();
   }
-  var interpretTimeHMS = ',\n' + hoursWith0 + ':' + minutesWith0 + ':' + secondsWith0;
-  if (user.preferredTimeSyntax == 'MDY') {
+  //put time together
+  var interpretTimeHMS = ',\n' + hoursWithEdit + ':' + minutesWith0 + ':' + secondsWith0 + ' ' + amOrPm;
+  //formatting
+  if (user.preferredDateSyntax == 'MDY') {
     interpretTime.innerHTML = daysOfWeek[date.getDay()] + ',\n' + months[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear() + interpretTimeHMS;
-  } else if (user.preferredTimeSyntax == 'DMY') {
+  } else if (user.preferredDateSyntax == 'DMY') {
     interpretTime.innerHTML = daysOfWeek[date.getDay()] + ',\n' + date.getDate() + ' of ' + months[date.getMonth()] + ' ' + date.getFullYear() + interpretTimeHMS;
-  } else if (user.preferredTimeSyntax == 'YMD') {
+  } else if (user.preferredDateSyntax == 'YMD') {
     interpretTime.innerHTML = daysOfWeek[date.getDay()] + ',\n' + date.getFullYear() + ' ' + months[date.getMonth()] + ' ' + date.getDate() + interpretTimeHMS;
   } else {
-    alert('# ERROR - AT CUSTOMIZATION, AT USER, AT PREFERREDTIMESYNTAX -- INVALID INPUT');
+    //not any accepted form
+    alert('# ERROR - AT CUSTOMIZATION, AT USER, AT PREFERREDDATESYNTAX -- INVALID INPUT');
   }
 };
 
