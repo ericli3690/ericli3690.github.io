@@ -60,7 +60,6 @@ var Guest = {
 }
 
 var user = Eric;
-export var importedVar = 22
 ///////////////////////////////////////////////////////////////////////////////
 //printing console
 var consoleList = [];
