@@ -1,0 +1,297 @@
+html {
+    font-family: "Trebuchet MS";
+}
+
+h1 {
+    font-weight: bold;
+    text-align: left;
+    position: relative;
+    bottom: 5px;
+}
+
+h5 {
+    text-align: right;
+    position: absolute;
+    right: 5px;
+    top: -30px;
+}
+
+canvas {
+    border: 3px solid black;
+    position: absolute;
+}
+
+.legendcss {
+    margin: -30px 0;
+}
+
+.legendcss::before {
+    content: "\2022";
+    display: inline-block;
+    font-size: 40px;
+    font-weight: bold;
+    width: 1em;
+    margin-left: -1em;
+    position: relative;
+    top: 5px;
+}
+
+#allPositioningParent {
+    transform: rotate(0deg);
+}
+
+.absolute {
+    position: absolute;
+}
+
+button {
+    position: absolute;
+}
+
+#smallMap {
+    top: 550px;
+}
+
+#mediumMap {
+    left: 140px;
+    top: 550px;
+}
+
+#largeMap {
+    left: 295px;
+    top: 550px;
+}
+
+#canvas {
+    top: 43px;
+    border: 5px solid black;
+}
+
+#canvas2 {
+    top: 43px;
+    border: 5px solid black;
+}
+
+#recruitButtonTextBefore,
+#recruitButtonTextAfter {
+    z-index: 2;
+    color: white;
+    pointer-events: none;
+    font-size: 14px;
+}
+
+#hoveredZone {
+    left: 680px;
+    top: 40px;
+}
+
+#selectionPalette {
+    left: 770px;
+    top: 50px;
+}
+
+#selectionPalettePrompt {
+    width: 500px;
+}
+
+#selectionPaletteButtons {
+    top: 100px;
+}
+
+#selectionDisplay {
+    left: 1300px;
+    top: 60px;
+    width: 300px;
+}
+
+#beginBoard {
+    left: 1390px;
+    top: 160px;
+}
+
+#currentPlayerTitle {
+    left: 775px;
+    top: 50px;
+    z-index: 2;
+}
+
+#currentPlayerDisplay {
+    left: 770px;
+}
+
+#movesLeft {
+    left: 1080px;
+    top: 50px;
+    width: 500px;
+}
+
+#moveBar {
+    left: 1535px;
+    top: 70px;
+}
+
+#selectMoveAmount {
+    font-size: 1em;
+    left: 770px;
+    top: 550px;
+}
+
+#inputMoveAmount {
+    left: 770px;
+    top: 720px;
+}
+
+#truceButton {
+    left: 1625px;
+    top: 708px;
+}
+
+#swapCanvas {
+    left: 1538px;
+    top: 630px;
+}
+
+#skipMove {
+    left: 1573px;
+    top: 670px;
+}
+
+#deleteIndicator {
+    left: 1492px;
+    top: 590px;
+}
+
+#mapSelectionPrompt {
+    top: 500px;
+}
+
+#moveOptionList {
+    left: 1150px;
+    top: 530px;
+    list-style: none;
+}
+
+#filler {
+    border: 3px solid white;
+    background-color: grey;
+    z-index: 10;
+    position: fixed;
+    left: -8px;
+    top: -8px;
+}
+
+#territoryMapLegend {
+    list-style: none;
+}
+
+#territoryMapLegendPositioning {
+    overflow: auto;
+    border: 3px solid black;
+    height: 100px;
+    width: 180px;
+    z-index: 2;
+    background-color: white;
+    top: 46px;
+    left: 571px;
+}
+
+#inputMovesPerTerritory {
+    width: 40px;
+    left: 30px;
+    top: 255px;
+}
+
+#inputDefaultMoves {
+    width: 40px;
+}
+
+#inputFortificationLimit {
+    width: 40px;
+}
+
+#inputStartingTroops {
+    width: 40px;
+    left: 43px;
+    top: 455px;
+}
+
+#attackAlert {
+    border: 2px solid black;
+    color: red;
+    font-weight: bold;
+    left: 394px;
+    top: -20px;
+    z-index: 3;
+}
+
+#zoneInfo {
+    width: 250px;
+    height: 430px;
+    border: 3px solid black;
+    top: 100px;
+    left: 770px;
+    list-style: none;
+}
+
+#zoneInfoTitle {
+    font-weight: bold;
+}
+
+#iLocation {
+    font-weight: bold;
+}
+
+#log {
+    width: 550px;
+    height: 430px;
+    top: 100px;
+    left: 1080px;
+    border: 3px solid black;
+    list-style: none;
+    overflow: auto;
+}
+
+#logTitle {
+    font-weight: bold;
+}
+
+#playerInfo {
+    border: 3px solid black;
+    width: 250px;
+    height: 160px;
+    left: 770px;
+    top: 370px;
+    list-style: none;
+}
+
+#playerInfoTitle {
+    font-weight: bold;
+}
+
+#backToIndex {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+
+#backToIndex:hover {
+    cursor: pointer;
+}
+
+.logListItems {
+    position: relative;
+    top: 5px;
+    right: 32px;
+}
+
+.zoneDetailListItems {
+    position: relative;
+    right: 35px;
+    top: 5px;
+}
+
+.playerInfoListItems {
+    position: relative;
+    top: 5px;
+    right: 35px;
+}

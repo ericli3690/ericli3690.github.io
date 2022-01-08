@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+html {
+    font-family: "Montserrat", sans-serif;
+}
+
+body {
+    margin: 0px;
+}
+
+h1 {
+    font-weight: 900;
+    font-size: 48px;
+    text-shadow: 4px 4px lightgrey;
+    transition: 100ms ease-in-out;
+}
+
+h1:hover {
+    transform: translate(-4px, -4px);
+    text-shadow: 8px 8px lightgrey;
+}
+
+h3 {
+    font-weight: 400;
+}
+
+a {
+    color: blue;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0.5em 0 0.5em 0;
+}
+
+li {
+    margin: 0.5em 0 0.5em 0;
+}
+
+input {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    border: none;
+    background-color: none;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.centered {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+}
+
+.main_div {
+    text-align: center;
+}
+
+.greyed {
+    color: grey;
+}
+
+.project_list {
+    margin: 10px;
+}
+
+.dropdown {
+    background: whitesmoke;
+    box-shadow: 4px 4px lightgrey;
+    border-radius: 4px;
+    padding: 5px;
+    display: none;
+}
+
+.dropdown_button {}
+
+.dropdown_child {}

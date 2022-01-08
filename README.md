@@ -1,2 +1,2 @@
 # ericli3690.github.io
-Navigation
+The hub for all things related to Eric Li

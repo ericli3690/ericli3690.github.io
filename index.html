@@ -1,37 +1,55 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="./Navigation.css">
-    <link rel="icon" href="./assets/icon.png" />
-    <title>Navigation</title>
-  </head>
-  <body>
-    <div class="grid">
-      <div class="box" id="buttons"><br>
-        <img id="image1" height="40px" width="40px" src="./assets/icon.png" /><br><br>
-        <button id="selfCloseButton" onClick="keyPressed(manualToggleObjects.selfClose)">Close This Page</button><br><br>
-        <button class="toggleButton" id="autocloseToggle" onClick="keyPressed(manualToggleObjects.autoclose)">AUTOCLOSE</button><br><br>
-        <button class="toggleButton" id="timeDisplayToggle" onClick="keyPressed(manualToggleObjects.timeDisplay)">TIME DISPLAY</button><br><br>
-        <button class="toggleButton" id="executeToggle" onClick="keyPressed(manualToggleObjects.executeToggle)">EXECUTE TOGGLE</button><br><br>
-        <button class="toggleButton" id="execute" onClick="keyPressed(manualToggleObjects.execute)">EXECUTE</button>
-      </div>
-      <div class="box">
-        <h1 class="leftpad">N A V I G A T I O N</h1>
-        <h4 id="interpretTime"># Time</h3>
-        <br id="space1" style="display: none;">
-        <p class="hotkeyInstructions">Enter Address Bar: <strong>CTRL+L</strong></h2>
-        <p class="hotkeyInstructions">Exit Address Bar: <strong>TAB</strong></h2><br>
-      </div>
-      <div class="box">
-        <h3 class="leftpad" id="hotkeysPrintTitle">HOTKEY LIST</h3>
-        <p id="hotkeysPrint"># No hotkeys set</p>
-      </div>
-      <div class="box" id="console">
-        <h3 class="leftpad" id="consolePrintTitle">CONSOLE</h3>
-        <p id="consolePrint">#</p>
-      </div>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./index.css">
+    <link rel="icon" href="./assets/images/profile_picture_1.jpg" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./index.js"></script>
+    <title>ericli3690 | index</title>
+</head>
+
+<body>
+    <div class="centered">
+        <div id="main" class="main_div">
+            <h1>index 👇</h1>
+            <h3>welcome to the digital hub for ericli3690</h3>
+            <ul id="projects" class="">
+                <li id="current"><a href="./navigation/index.html">▶ navigation</a></li>
+                <li id="coming_soon">
+                    <input class="dropdown_button" type="button" value="➡ upcoming..." /><br>
+                    <ul class="dropdown">
+                        <li class="dropdown_child"><a class="greyed">▶ resume and portfolio (coming soon)</a></li>
+                        <li class="dropdown_child"><a class="greyed">▶ quarterly (coming soon)</a></li>
+                    </ul>
+                </li>
+                <!--
+                <li id="old">
+                    <input class="dropdown_button" type="button" value="➡ old projects..." />
+                    <ul class="dropdown">
+                        <li class="dropdown_child"><a href="./hexonia/index.html">▶ hexonia</a></li>
+                    </ul>
+                </li>
+                -->
+            </ul>
+            <ul id="contact"></ul>
+        </div>
     </div>
-    <script src="./Navigation.js"></script>
-  </body>
+</body>
+
 </html>
+
+<!--
+
+TODO
+some animations
+hexonia
+dropdown for "baking" projects
+hover for desc
+contact: https://fontawesome.com/
+dynamic background
+
+-->

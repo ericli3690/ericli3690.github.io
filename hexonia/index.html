@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Kingdoms of Hexonia v2</title>
+    <link rel="icon" href="https://static.thenounproject.com/png/28031-200.png" />
+    <link rel="stylesheet" type="text/css" href="./Kingdoms of Hexonia v2.css" />
+</head>
+
+<body oncontextmenu="return false;">
+    <div id="allPositioningParent">
+        <button id="backToIndex" onclick="location.href='../index.html'">&lt; index</button>
+        <h1>Kingdoms of Hexonia</h1>
+        <h5><a href="./Kingdoms of Hexonia Rules.html" target="_blank">Click Me for Rules</a></h5>
+        <canvas width="1780px" height="700px" id="filler"></canvas>
+        <button id="beginGame">Play</button>
+        <div class="absolute" id="mapSelection">
+            <h3 id="customSettingsPrompt">Settings</h3><br>
+            <h4 id="defaultMovesPrompt">Default Amount of Moves Per Player:</h4>
+            <div id="defaultMovesOptions">
+                <input type="radio" name="d" id="dDefault">Dependent on Map Size (1, 2, 3)</input><br>
+                <input type="radio" name="d" id="dCustom">Custom:</input>
+                <input type="number" name="defaultMoves" title="Input the default amount of moves a player has" id="inputDefaultMoves"></input>
+            </div>
+            <h4 id="movesPerTerritoryPrompt">Moves Gained Per Territory:</h4>
+            <p class="absolute">1 / </p><input class="absolute" type="number" name="movesPerTerritory" title="Input moves gained per territory owned" id="inputMovesPerTerritory"></input><br><br>
+            <h4 id="fortificationLimitPrompt">Maximum Fortification Level:</h4>
+            <div id="fortificationLimitOptions">
+                <input type="radio" name="f" id="fNone">None</input><br>
+                <input type="radio" name="f" id="fCustom">Custom:</input>
+                <input type="number" name="fortificationLimit" title="Input the maximum amount a zone can be fortified" id="inputFortificationLimit"></input>
+            </div>
+            <h4 id="startingTroopsPrompt">Starting Troops Per Player:</h4>
+            <p class="absolute"> 10 * </p><input class="absolute" type="number" name="startingTroops" title="Input the amount of troops each player starts with" id="inputStartingTroops"></input>
+            <h3 class="absolute" id="mapSelectionPrompt">Select Map Size to Begin:</h3>
+            <button id="smallMap">Small Map (5 x 5)</button>
+            <button id="mediumMap">Medium Map (9 x 9)</button>
+            <button id="largeMap">Large Map (13 x 13)</button>
+        </div>
+        <canvas width="750px" height="700px" id="canvas"></canvas>
+        <canvas width="750px" height="700px" id="canvas2"></canvas>
+        <div class="absolute" id="territoryMapLegendPositioning">
+            <h4>Territory Legend</h4>
+            <ul id="territoryMapLegend"></ul>
+        </div>
+        <p class="absolute" id="recruitButtonTextBefore"></p>
+        <p class="absolute" id="recruitButtonTextAfter"></p>
+        <h2 class="absolute" id="hoveredZone">XXX</h2>
+        <div class="absolute" id="selectionPalette">
+            <h3 class="absolute" id="selectionPalettePrompt">Pick a colour for Player 1, select their territory on the map, then repeat as needed! Hit "Selection Complete!" when you are done.</h3>
+            <div class="absolute" id="selectionPaletteButtons">
+                <canvas class="absolute" width="40px" height="40px" id="selectionPaletteR"></canvas>
+                <canvas class="absolute" width="40px" height="40px" id="selectionPaletteO" style="left:50px;"></canvas>
+                <canvas class="absolute" width="40px" height="40px" id="selectionPaletteY" style="left:100px;"></canvas>
+                <canvas class="absolute" width="40px" height="40px" id="selectionPaletteG" style="left:150px;"></canvas>
+                <canvas class="absolute" width="40px" height="40px" id="selectionPaletteB" style="left:200px;"></canvas>
+                <canvas class="absolute" width="40px" height="40px" id="selectionPaletteP" style="left:250px;"></canvas>
+            </div>
+        </div>
+        <h3 class="absolute" id="selectionDisplay">Player 1 controls the ___ empire.</h3>
+        <button id="beginBoard">Selection Complete!</button>
+        <h2 class="absolute" id="currentPlayerTitle">Current Player</h2>
+        <canvas width="900px" height="40px" id="currentPlayerDisplay"></canvas>
+        <h2 class="absolute" id="movesLeft">Moves Left: X | Progress to Next Move:</h2>
+        <canvas class="absolute" width="120px" height="20px" id="moveBar"></canvas>
+        <div class="absolute" id="selectMoveAmount">
+            <h3 id="selectMoveAmountCaption">Army Movement Options:</h3>
+            <input type="radio" name="m" id="mAll">(1) All - move all troops</input><br>
+            <input type="radio" name="m" id="mHalf">(2) Half - move half of the troops, rounded down</input><br>
+            <input type="radio" name="m" id="mMost">(3) Most - move all troops, except for 5 units</input><br>
+            <input type="radio" name="m" id="mLeast">(4) Least - leave all troops, except for 5 units</input><br>
+            <input type="radio" name="m" id="mCustom">(5) Custom - move the amount in the textbox below</input><br>
+        </div>
+        <input class="absolute" type="text" name="moveamount" title="Input the amount of troops to be moved for the Custom movement option" id="inputMoveAmount"></input>
+        <h2 class="absolute" id="attackAlert">YOU MAY NOT ATTACK ANYMORE</h2>
+        <ul class="absolute" id="zoneInfo">
+            <li class="zoneDetailListItems" id="zoneInfoTitle">Zone Details</li>
+            <li class="zoneDetailListItems" id="iLocation">[modifier] Zone [row]-[dia]</li>
+            <li class="zoneDetailListItems" id="iTerritory">Part of the [territory] Territory</li>
+            <li class="zoneDetailListItems" id="iOwner">[owner] Sovereign Land</li>
+            <li class="zoneDetailListItems" id="iHousing">Garrisoned by [housing] troops</li>
+            <li class="zoneDetailListItems" id="iHousingModifiers">Troops in this zone are [fatigued, recruiting]</li>
+            <li class="zoneDetailListItems" id="iFortifications">Protected by Level [fortifications] Fortifications</li>
+            <li class="zoneDetailListItems" id="iTemple">Containing the Royal [owner] [specific temple]</li>
+            <li class="zoneDetailListItems" id="iBarracks">Containing Military Assets, including [specific barracks, pluralized]</li>
+            <li class="zoneDetailListItems" id="iCorrupted">Overrun by the Corruption [if applicable]</li>
+            <li class="zoneDetailListItems" id="iCorruptionFortified">Fortified by the Corruption to Level [corruptfortify] [if applicable]</li>
+            <li class="zoneDetailListItems" id="iCleansed">Cleansed and Protected from the Corruption [if applicable]</li>
+        </ul>
+        <ul class="absolute" id="playerInfo">
+            <li class="playerInfoListItems" id="playerInfoTitle">Player Details</li>
+            <li class="playerInfoListItems" id="pNumberColor">[player number, color]</li>
+            <li class="playerInfoListItems" id="pTerritories">[territories owned]</li>
+            <li class="playerInfoListItems" id="pTemples">[temples owned]</li>
+            <li class="playerInfoListItems" id="pCommandSoftCap">[global command limit soft cap]</li>
+            <li class="playerInfoListItems" id="pCommandHardCap">[personal official command limit]</li>
+        </ul>
+        <ul class="absolute" id="log">
+            <li class="logListItems" id="logTitle">History Log</li>
+        </ul>
+        <button class="absolute" id="truceButton">Truce</button><br>
+        <button class="absolute" id="swapCanvas">Toggle Territory Map</button>
+        <button class="absolute" id="skipMove">Forfeit a Move</button>
+        <button class="absolute" id="deleteIndicator">Renounce A Territory (DEL)</button>
+        <ul class="absolute" id="moveOptionList">
+            <h3>Move Options:</h3>
+            <li title="Click on an army, then direct it somewhere using the keyboard (A W E D X Z) or mouse">1 Move - MOVE</li>
+            <li title="Right-click on a zone to open the build menu, then choose recruit (grey) or press R">1 Move - RECRUIT</li>
+            <li title="Right-click on a zone to open the build menu, then choose fortify (blue) or press F">1 Move - FORTIFY</li>
+            <li title="Right-click on a zone to open the build menu, then choose cleanse (green) or press C" id="moveOptionListCleanse">2 Moves - CLEANSE</li>
+            <li title="Click on an army, then direct it to attack a fortified or garrisoned zone using the keyboard (A W E D X Z) or mouse" id="moveOptionListAttack">2 Moves - ATTACK</li>
+            <li title="Right-click on a zone to open the build menu, then choose build monument (yellow) or press Q" id="moveOptionListWorship">1 Turn - BUILD MONUMENT</li>
+            <li title="Right-click on a zone to open the build menu, then choose build military infrastructure (red) or press T" id="moveOptionListBarracks">1 Turn - BUILD MILITARY INFRASTRUCTURE</li>
+        </ul>
+        <script type="module" src="./KOH Launch.js"></script>
+        <script type="module" src="./KOH Parameters.js"></script>
+        <script type="module" src="./KOH Event Listeners.js"></script>
+        <script type="module" src="./KOH Zones.js"></script>
+        <script type="module" src="./KOH Player.js"></script>
+        <script type="module" src="./KOH Battle Logic.js"></script>
+    </div>
+</body>
+
+</html>
