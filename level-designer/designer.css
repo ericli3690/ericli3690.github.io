@@ -1,0 +1,104 @@
+html {
+  font-family: sans-serif;
+}
+
+canvas {
+  border: 3px solid white;
+}
+
+#canvas {
+  border: 3px solid black;
+}
+
+.block {
+  width: 20px;
+  height: 20px;
+}
+
+
+
+
+
+
+#div01 {
+  position: relative;
+  bottom: 10px;
+}
+
+#div2 {
+  position: relative;
+  bottom: 185px;
+  left: 300px;
+  width: 300px;
+}
+
+#div3 {
+  position: relative;
+}
+
+#div10 {
+  overflow-wrap: break-word;
+}
+
+
+
+
+
+
+#initCanvas {
+  position: relative;
+  top: 15px;
+}
+
+
+
+
+
+
+#fillInstructions, #copy, #copyInstructions, #paste, #pasteInstructions {
+  position: relative;
+}
+
+#fillInstructions {
+  left: 140px;
+  bottom: 35px;
+}
+
+#copy {
+  bottom: 40px;
+}
+
+#copyInstructions {
+  left: 140px;
+  bottom: 75px;
+}
+
+#paste {
+  bottom: 80px;
+}
+
+#pasteInstructions {
+  bottom: 115px;
+  left: 140px;
+}
+
+
+
+
+
+
+
+#inputX, #inputY, #loadString {
+  position: relative;
+  bottom: 35px;
+  left: 90px;
+}
+
+#fillInstructions {
+  width: 800px;
+}
+
+#blockInstructions {
+  position: relative;
+  bottom: 20px;
+}

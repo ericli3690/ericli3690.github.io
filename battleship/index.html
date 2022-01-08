@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Battleship</title>
+    <link rel="stylesheet" type="text/css" href="./BattleshipStyle.css" />
+  </head>
+  <body onload="beginGame()">
+    <h1>
+      BATTLESHIP
+    </h1>
+    <h3 class="header">
+      Battleship: Sink and Destroy
+    </h3>
+    <h3 class="header">
+      RULES:
+      <ul>
+        <li>READ THE RULES CAREFULLY</li>
+        <li>Welcome to Battleship! Press PLAY to start!</li>
+        <li>This game is best played at 50% zoom</li>
+        <li>In this game, there are two grids</li>
+        <li>Your grid is the bottom grid; the enemy's is the top grid</li>
+        <li>At the beginning of the game, use the green control buttons to manipulate your ships</li>
+        <li>Pressing confirm will ready the next ship for placement; only press it when you are sure</li>
+        <li>Do not place two ships in the same square</li>
+        <li>When manipulating your ships, do not move them over each other, during manipulation and placement alike</li>
+        <li>After you have placed your five ships, the enemy will attack</li>
+        <li>Red squares indicate a hit; white squares indicate a miss</li>
+        <li>Once the enemy has attacked, a red panel will appear; use it to fire at the enemy</li>
+        <li>Pressing fire will make your attack (again, red for hit; white for miss)</li>
+        <li>Do not fire at the same place twice</li>
+        <li>Immediately after your turn, the enemy will attack</li>
+        <li>When you take out all the enemy's ships, you win</li>
+        <li>If the enemy takes out all your ships before you do so to them, you will lose</li>
+        <li>Once you are done placing your ships, two cheat buttons will show; they are only to be used to check that there are indeed five enemy ships on the enemy grid (a lower number will break the game)</li>
+        <li>As an extra measure, the cheat buttons will disappear after your first turn, so they can't be used mid-game</li>
+        <li>If you lose, then a grid will show up displaying the enemy ships you missed</li>
+        <li>To reset the game and play again, reload the page</li>
+        <li>Note: when manipulating objects, do not manipulate them off the grid</li>
+        <li id="havefun">HAVE FUN</li>
+      </ul>
+    </h3>
+    <h2 class="gridheader" id="egridhead">
+      ENEMY GRID
+    </h2>
+    <canvas id="enemy" width="500" height="500"></canvas><br>
+    <h2 class="gridheader" id="ygridhead">
+      YOUR GRID
+    </h2>
+    <canvas id="you" width="500" height="500"></canvas>
+    <button class="deploySelf" id="up" onClick="selfUp()">Up</button><br>
+    <button class="deploySelf" id="left" onClick="selfLeft()">Left</button><br>
+    <button class="deploySelf" id="confirm" onClick="activateScaleClickAndReadyNewShip()">CONFIRM</button><br>
+    <button class="deploySelf" id="right" onClick="selfRight()">Right</button><br>
+    <button class="deploySelf" id="down" onClick="selfDown()">Down</button><br>
+    <button class="attackEnemy" id="aup" onClick="attackUp()">Up</button><br>
+    <button class="attackEnemy" id="aleft" onClick="attackLeft()">Left</button><br>
+    <button class="attackEnemy" id="fire" onClick="fire()">FIRE</button><br>
+    <button class="attackEnemy" id="aright" onClick="attackRight()">Right</button><br>
+    <button class="attackEnemy" id="adown" onClick="attackDown()">Down</button><br>
+    <button id="pressToShow" onClick="showEShips()">Show Enemy Ships</button><br>
+    <button id="pressToHide" onClick="hideEShips()">Hide Enemy Ships</button>
+    <button id="play" onClick="toggleGameItems(), hidePlay()">PLAY</button>
+    <h2 id="win">YOU WIN</h2>
+    <h2 id="lose">YOU LOSE</h2>
+    <script>
+    ////////////////////////////////////////////////////////////////////////////
+
+      //making the enemy board
+      function makeEnemyBoard() {
+        var xi = 0;
+        var yi = 0;
+        for (var r = 1; r < 11; r++) {
+          for (var i = 1; i < 11; i++) {
+            var canvas = document.getElementById('enemy');
+            var ctx = canvas.getContext('2d');
+            ctx.strokeStyle = 'white';
+            ctx.strokeRect(xi, yi, 50, 50);
+            xi = i * 50;
+          }
+          xi = 0;
+          yi = r * 50;
+        }
+      };
+
+      //making the player board
+      function makePlayerBoard() {
+        var xj = 0;
+        var yj = 0;
+        for (var r = 1; r < 11; r++) {
+          for (var i = 1; i < 11; i++) {
+            var canvas = document.getElementById("you");
+            var ctx = canvas.getContext("2d");
+            ctx.strokeStyle = 'white';
+            ctx.strokeRect(xj, yj, 50, 50);
+            xj = i * 50;
+          }
+          xj = 0;
+          yj = r * 50;
+        }
+      };
+
+      //deciding enemy ship positions
+      var possXY = [1, 51, 101, 151, 201, 251, 301, 351, 401, 451];
+      function ranPosition() {
+        return possXY[Math.floor(Math.random() * 10)];
+      };
+
+      //enemy ship declarations
+      var scoutE;
+      var destroyerE;
+      var submarineE;
+      var battleshipE;
+      var carrierE;
+
+      //player ship declarations
+      var scoutP;
+      var destroyerP;
+      var submarineP;
+      var battleshipP;
+      var carrierP;
+
+      //formatting enemy ships
+      function componentE(width, height, x, y, color) {
+        var canvas = document.getElementById("enemy");
+        var ctx = canvas.getContext("2d");
+        ctx.fillStyle = color;
+        ctx.fillRect(x, y, width, height);
+      };
+
+      //formatting player ships
+      function componentP(width, height, x, y, color) {
+        var canvas = document.getElementById("you");
+        var ctx = canvas.getContext("2d");
+        ctx.fillStyle = color;
+        ctx.fillRect(x, y, width, height);
+      };
+
+      //placing enemy ships
+      var scoutEX = ranPosition();
+      var scoutEY = ranPosition();
+      var destroyerEX = ranPosition();
+      var destroyerEY = ranPosition();
+      var submarineEX = ranPosition();
+      var submarineEY = ranPosition();
+      var battleshipEX = ranPosition();
+      var battleshipEY = ranPosition();
+      var carrierEX = ranPosition();
+      var carrierEY = ranPosition();
+
+      function deployEnemies() {
+        scoutE = new componentE(48, 48, scoutEX, scoutEY, 'black');
+        destroyerE = new componentE(48, 48, destroyerEX, destroyerEY, 'black');
+        submarineE = new componentE(48, 48, submarineEX, submarineEY, 'black');
+        battleshipE = new componentE(48, 48, battleshipEX, battleshipEY, 'black');
+        carrierE = new componentE(48, 48, carrierEX, carrierEY, 'black');
+      };
+
+      //placing player ships
+      ////variables
+      var scoutX = 1;
+      var scoutY = 1;
+      var destroyerX = 1;
+      var destroyerY = 1;
+      var submarineX = 1;
+      var submarineY = 1;
+      var battleshipX = 1;
+      var battleshipY = 1;
+      var carrierX = 1;
+      var carrierY = 1;
+
+      ////player ship placement variables
+      var playerShipsArray = [scoutP, destroyerP, submarineP, battleshipP, carrierP];
+      var currentShip = playerShipsArray[0];
+
+      var shipXLocations = [scoutX, destroyerX, submarineX, battleshipX, carrierX];
+      var shipYLocations = [scoutY, destroyerY, submarineY, battleshipY, carrierY];
+
+      var currentShipXLocation = shipXLocations[0];
+      var currentShipYLocation = shipYLocations[0];
+
+      var currentInteger = 0;
+
+      ////enemy attack placement variables
+      var updateXs = 1;
+      var updateXd = 1;
+      var updateXm = 1;
+      var updateXb = 1;
+      var updateXc = 1;
+      var updateYs = 1;
+      var updateYd = 1;
+      var updateYm = 1;
+      var updateYb = 1;
+      var updateYc = 1;
+
+      var shipUpdateX = [updateXs, updateXd, updateXm, updateXb, updateXc];
+      var shipUpdateY = [updateYs, updateYd, updateYm, updateYb, updateYc];
+
+      var currentShipUpdateX = shipUpdateX[0];
+      var currentShipUpdateY = shipUpdateY[0];
+
+      ////beginning ship placement
+      function deploySelf() {
+        switch (currentInteger) {
+          case 0:
+          scoutP = new componentP(48, 48, currentShipXLocation, currentShipYLocation, '#7FFFD4');
+          break;
+          case 1:
+          destroyerP = new componentP(48, 48, currentShipXLocation, currentShipYLocation, '#00FFFF');
+          break;
+          case 2:
+          submarineP = new componentP(48, 48, currentShipXLocation, currentShipYLocation, '#1E90FF');
+          break;
+          case 3:
+          battleshipP = new componentP(48, 48, currentShipXLocation, currentShipYLocation, '#0000FF');
+          break;
+          case 4:
+          carrierP = new componentP(48, 48, currentShipXLocation, currentShipYLocation, '#00008B');
+          break;
+        }
+      };
+
+      ////clearing previous layer ship iterations
+      function clear() {
+          var ctx = document.getElementById('you').getContext('2d');
+          ctx.clearRect(currentShipXLocation, currentShipYLocation, 48, 48);
+      };
+
+      ////readying the next player ship
+      function readyNewShip() {
+        switch (currentInteger) {
+          case 0:
+          updateXs = currentShipUpdateX;
+          break;
+          case 1:
+          updateXd = currentShipUpdateX;
+          break;
+          case 2:
+          updateXm = currentShipUpdateX;
+          break;
+          case 3:
+          updateXb = currentShipUpdateX;
+          break;
+          case 4:
+          updateXc = currentShipUpdateX;
+          break;
+        }
+        switch (currentInteger) {
+          case 0:
+          updateYs = currentShipUpdateY;
+          break;
+          case 1:
+          updateYd = currentShipUpdateY;
+          break;
+          case 2:
+          updateYm = currentShipUpdateY;
+          break;
+          case 3:
+          updateYb = currentShipUpdateY;
+          break;
+          case 4:
+          updateYc = currentShipUpdateY;
+          break;
+        }
+        currentInteger += 1;
+        currentShip = playerShipsArray[currentInteger];
+        currentShipXLocation = shipXLocations[currentInteger];
+        currentShipYLocation = shipYLocations[currentInteger];
+        shipUpdateX = [updateXs, updateXd, updateXm, updateXb, updateXc];
+        shipUpdateY = [updateYs, updateYd, updateYm, updateYb, updateYc];
+        currentShipUpdateX = shipUpdateX[currentInteger];
+        currentShipUpdateY = shipUpdateY[currentInteger];
+        deploySelf();
+      }
+
+      ////manipulating player ship positions
+      function selfUp() {
+        clear();
+        currentShipYLocation -= 50;
+        currentShipUpdateY -= 50;
+        switch (currentInteger) {
+          case 0:
+          scoutP = new componentP(48, 48, currentShipXLocation, currentShipYLocation, '#7FFFD4');
+          break;
+          case 1:
+          destroyerP = new componentP(48, 48, currentShipXLocation, currentShipYLocation, '#00FFFF');
+          break;
+          case 2:
+          submarineP = new componentP(48, 48, currentShipXLocation, currentShipYLocation, '#1E90FF');
+          break;
+          case 3:
+          battleshipP = new componentP(48, 48, currentShipXLocation, currentShipYLocation, '#0000FF');
+          break;
+          case 4:
+          carrierP = new componentP(48, 48, currentShipXLocation, currentShipYLocation, '#00008B');
+          break;
+        }
+      };
+      function selfLeft() {
+        clear();
+        currentShipXLocation -= 50;
+        currentShipUpdateX -= 50;
+        switch (currentInteger) {
+          case 0:
+          scoutP = new componentP(48, 48, currentShipXLocation, currentShipYLocation, '#7FFFD4');
+          break;
+          case 1:
+          destroyerP = new componentP(48, 48, currentShipXLocation, currentShipYLocation, '#1E90FF');
+          break;
+          case 2:
+          submarineP = new componentP(48, 48, currentShipXLocation, currentShipYLocation, '#1E90FF');
+          break;
+          case 3:
+          battleshipP = new componentP(48, 48, currentShipXLocation, currentShipYLocation, '#0000FF');
+          break;
+          case 4:
+          carrierP = new componentP(48, 48, currentShipXLocation, currentShipYLocation, '#00008B');
+          break;
+        }
+      };
+      function selfRight() {
+        clear();
+        currentShipXLocation += 50;
+        currentShipUpdateX += 50;
+        switch (currentInteger) {
+          case 0:
+          scoutP = new componentP(48, 48, currentShipXLocation, currentShipYLocation, '#7FFFD4');
+          break;
+          case 1:
+          destroyerP = new componentP(48, 48, currentShipXLocation, currentShipYLocation, '#00FFFF');
+          break;
+          case 2:
+          submarineP = new componentP(48, 48, currentShipXLocation, currentShipYLocation, '#1E90FF');
+          break;
+          case 3:
+          battleshipP = new componentP(48, 48, currentShipXLocation, currentShipYLocation, '#0000FF');
+          break;
+          case 4:
+          carrierP = new componentP(48, 48, currentShipXLocation, currentShipYLocation, '#00008B');
+          break;
+        }
+      };
+      function selfDown() {
+        clear();
+        currentShipYLocation += 50;
+        currentShipUpdateY += 50;
+        switch (currentInteger) {
+          case 0:
+          scoutP = new componentP(48, 48, currentShipXLocation, currentShipYLocation, '#7FFFD4');
+          break;
+          case 1:
+          destroyerP = new componentP(48, 48, currentShipXLocation, currentShipYLocation, '#00FFFF');
+          break;
+          case 2:
+          submarineP = new componentP(48, 48, currentShipXLocation, currentShipYLocation, '#1E90FF');
+          break;
+          case 3:
+          battleshipP = new componentP(48, 48, currentShipXLocation, currentShipYLocation, '#0000FF');
+          break;
+          case 4:
+          carrierP = new componentP(48, 48, currentShipXLocation, currentShipYLocation, '#00008B');
+          break;
+        }
+      };
+
+      //hiding player ship manipulation buttons
+      var scaleClickVar = 0;
+      var buttonArray = ['up', 'left', 'confirm', 'right', 'down'];
+
+      function scaleClick() {
+        var newScaleClickVar = scaleClickVar + 1;
+        scaleClickVar = newScaleClickVar;
+        if (scaleClickVar === 5) {
+          for (var a = 0; a < 5; a++) {
+            var canv = document.getElementById(buttonArray[a]);
+            if (canv.style.display === 'none') {
+              canv.style.display = 'block';
+            } else {
+              canv.style.display = 'none';
+            }
+          }
+          alert('The enemy is attacking.');
+          hideCheatButtons();
+          enemyAttack1();
+        }
+      };
+
+      //enemy attack patterns
+      var incrementLose = 0;
+      var compensate = 0;
+      var aPossXY = [1, 51, 101, 151, 201, 251, 301, 351, 401, 451];
+      function aRanPosition() {
+        return aPossXY[Math.floor(Math.random() * 10)];
+      };
+
+      var hitOnScout = false;
+      var hitOnDestroyer = false;
+      var hitOnSubmarine = false;
+      var hitOnBattleship = false;
+      var hitOnCarrier = false;
+
+      function compensateBody() {
+        var aimX = aRanPosition();
+        var aimY = aRanPosition();
+        if (aimX === updateXs && aimY === updateYs) {
+          var success = new componentP(48, 48, aimX, aimY, 'red');
+          if (hitOnScout === false) {
+            alert('Your scout was hit!');
+          }
+          hitOnScout = true;
+        } else if (aimX === updateXd && aimY === updateYd) {
+          var success = new componentP(48, 48, aimX, aimY, 'red');
+          if (hitOnDestroyer === false) {
+            alert('Your destroyer was hit!');
+          }
+          hitOnDestroyer = true;
+        } else if (aimX === updateXm && aimY === updateYm) {
+          var success = new componentP(48, 48, aimX, aimY, 'red');
+          if (hitOnSubmarine === false) {
+            alert('Your submarine was hit!');
+          }
+          hitOnSubmarine = true;
+        } else if (aimX === updateXb && aimY === updateYb) {
+          var success = new componentP(48, 48, aimX, aimY, 'red');
+          if (hitOnBattleship === false) {
+            alert('Your battleship was hit!');
+          }
+          hitOnBattleship = true;
+        } else if (aimX === updateXc && aimY === updateYc) {
+          var success = new componentP(48, 48, aimX, aimY, 'red');
+          if (hitOnCarrier === false) {
+            alert('Your carrier was hit!');
+          }
+          hitOnCarrier = true;
+        } else {
+          var fail = new componentP(48, 48, aimX, aimY, 'white');
+        }
+      }
+
+      function enemyAttack1() {
+        var aimX = aRanPosition();
+        var aimY = aRanPosition();
+        if (aimX === updateXs && aimY === updateYs) {
+          var success = new componentP(48, 48, aimX, aimY, 'red');
+          if (hitOnScout === false) {
+            alert('Your scout was hit!');
+          }
+          hitOnScout = true;
+        } else if (aimX === updateXd && aimY === updateYd) {
+          var success = new componentP(48, 48, aimX, aimY, 'red');
+          if (hitOnDestroyer === false) {
+            alert('Your destroyer was hit!');
+          }
+          hitOnDestroyer = true;
+        } else if (aimX === updateXm && aimY === updateYm) {
+          var success = new componentP(48, 48, aimX, aimY, 'red');
+          if (hitOnSubmarine === false) {
+            alert('Your submarine was hit!');
+          }
+          hitOnSubmarine = true;
+        } else if (aimX === updateXb && aimY === updateYb) {
+          var success = new componentP(48, 48, aimX, aimY, 'red');
+          if (hitOnBattleship === false) {
+            alert('Your battleship was hit!');
+          }
+          hitOnBattleship = true;
+        } else if (aimX === updateXc && aimY === updateYc) {
+          var success = new componentP(48, 48, aimX, aimY, 'red');
+          if (hitOnCarrier === false) {
+            alert('Your carrier was hit!');
+          }
+          hitOnCarrier = true;
+        } else {
+          var fail = new componentP(48, 48, aimX, aimY, 'white');
+        }
+        compensate += 1;
+        if (compensate > 25) {
+          compensateBody();
+        }
+        if (compensate > 45) {
+          compensateBody();
+        }
+        if (compensate > 60) {
+          compensateBody();
+        }
+        isLose();
+        playerBeginAttack();
+        toggleAButtonVis();
+      };
+
+      //revealing ships mid game
+      function hideCheatButtons() {
+        var target1 = document.getElementById('pressToShow');
+        var target2 = document.getElementById('pressToHide');
+        var targets = [target1, target2];
+        for (var i = 0; i < 2; i++) {
+          if (targets[i].style.display === 'none') {
+            targets[i].style.display = 'block';
+          } else {
+            targets[i].style.display = 'none';
+          }
+        }
+      };
+
+      function showEShips() {
+        var ctx = document.getElementById('enemy').getContext('2d');
+        ctx.clearRect(0, 0, 500, 500);
+        makeEnemyBoard();
+        playerBeginAttack();
+        scoutE = new componentE(48, 48, scoutEX, scoutEY, 'yellow');
+        destroyerE = new componentE(48, 48, destroyerEX, destroyerEY, 'yellow');
+        submarineE = new componentE(48, 48, submarineEX, submarineEY, 'yellow');
+        battleshipE = new componentE(48, 48, battleshipEX, battleshipEY, 'yellow');
+        carrierE = new componentE(48, 48, carrierEX, carrierEY, 'yellow');
+      };
+
+      function hideEShips() {
+        var ctx = document.getElementById('enemy').getContext('2d');
+        ctx.clearRect(0, 0, 500, 500);
+        makeEnemyBoard();
+        playerBeginAttack();
+        scoutE = new componentE(48, 48, scoutEX, scoutEY, 'black');
+        destroyerE = new componentE(48, 48, destroyerEX, destroyerEY, 'black');
+        submarineE = new componentE(48, 48, submarineEX, submarineEY, 'black');
+        battleshipE = new componentE(48, 48, battleshipEX, battleshipEY, 'black');
+        carrierE = new componentE(48, 48, carrierEX, carrierEY, 'black');
+      };
+
+      //hiding player attack buttons
+      var aButtonArray = ['aup', 'aleft', 'fire', 'aright', 'adown'];
+      function toggleAButtonVis() {
+        for (var a = 0; a < 5; a++) {
+          var canv = document.getElementById(aButtonArray[a]);
+          if (canv.style.display === 'none') {
+            canv.style.display = 'block';
+          } else {
+            canv.style.display = 'none';
+          }
+        }
+      };
+
+      //player attacks
+      var playerAimX = 1;
+      var playerAimY = 1;
+      var control2;
+
+      ////beginning aim
+      function playerBeginAttack() {
+        var aim = new componentE(5, 5, playerAimX, playerAimY, 'orange');
+      };
+
+      ////clearing previous aim iterations
+      function aimClear() {
+        var ctx = document.getElementById('enemy').getContext('2d');
+        ctx.clearRect(playerAimX, playerAimY, 5, 5);
+      };
+
+      ////moving aim
+      function attackUp() {
+        aimClear();
+        playerAimY -= 50;
+        aim = new componentE(5, 5, playerAimX, playerAimY, 'orange');
+      };
+      function attackLeft() {
+        aimClear();
+        playerAimX -= 50;
+        aim = new componentE(5, 5, playerAimX, playerAimY, 'orange');
+      };
+      function attackRight() {
+        aimClear();
+        playerAimX += 50;
+        aim = new componentE(5, 5, playerAimX, playerAimY, 'orange');
+      };
+      function attackDown() {
+        aimClear();
+        playerAimY += 50;
+        aim = new componentE(5, 5, playerAimX, playerAimY, 'orange');
+      };
+
+      //firing
+      var incrementWin = 0;
+      var discheats = 0;
+
+      function fire() {
+        discheats += 1;
+        if (playerAimX === scoutEX && playerAimY === scoutEY) {
+          var hit = new componentE(48, 48, playerAimX, playerAimY, 'red');
+          alert('Hooray! You hit their scout!');
+          incrementWin += 1;
+        } else if (playerAimX === destroyerEX && playerAimY === destroyerEY) {
+          var hit = new componentE(48, 48, playerAimX, playerAimY, 'red');
+          alert('Hooray! You hit their destroyer!');
+          incrementWin += 1;
+        } else if (playerAimX === submarineEX && playerAimY === submarineEY) {
+          var hit = new componentE(48, 48, playerAimX, playerAimY, 'red');
+          alert('Hooray! You hit their submarine!');
+          incrementWin += 1;
+        } else if (playerAimX === battleshipEX && playerAimY === battleshipEY) {
+          var hit = new componentE(48, 48, playerAimX, playerAimY, 'red');
+          alert('Hooray! You hit their battleship!');
+          incrementWin += 1;
+        } else if (playerAimX === carrierEX && playerAimY === carrierEY) {
+          var hit = new componentE(48, 48, playerAimX, playerAimY, 'red');
+          alert('Hooray! You hit their carrier!');
+          incrementWin += 1;
+        } else {
+          var miss = new componentE(48, 48, playerAimX, playerAimY, 'white');
+        }
+        if (discheats === 1) {
+          var disshow = document.getElementById('pressToShow');
+          var dishide = document.getElementById('pressToHide');
+          var targets = [disshow, dishide];
+          for (var i = 0; i < 2; i++) {
+            if (targets[i].style.display === 'none') {
+              targets[i].style.display = 'block';
+            } else {
+              targets[i].style.display = 'none';
+            }
+          }
+        }
+        toggleAButtonVis();
+        isWin();
+        enemyAttack1();
+      };
+
+      //hiding and showing win and lose messages at the start of the game
+      function hideWinLose() {
+        var winLoseArray = [win, lose];
+        for (var i = 0; i < 2; i++) {
+          if (winLoseArray[i].style.display === 'none') {
+            winLoseArray[i].style.display = 'block';
+          } else {
+            winLoseArray[i].style.display = 'none';
+          }
+        }
+      }
+
+      //winning the game
+      function isWin() {
+        if (incrementWin === 5) {
+          toggleAButtonVis();
+          var disyou = document.getElementById('you');
+          var disenemy = document.getElementById('enemy');
+          var disegridhead = document.getElementById('egridhead');
+          var disygridhead = document.getElementById('ygridhead');
+          var showwin = document.getElementById('win');
+          var tar = [disyou, disenemy, disegridhead, disygridhead];
+          for (var i = 0; i < 4; i++) {
+            if (tar[i].style.display === 'none') {
+              tar[i].style.display = 'block';
+            } else {
+              tar[i].style.display = 'none';
+            }
+          }
+          if (showwin.style.display === 'none') {
+            showwin.style.display = 'block';
+          } else {
+            showwin.style.display = 'none';
+          }
+          alert('You WIN!!!');
+        } else {
+          alert('The enemy is attacking.');
+        }
+      };
+
+      //losing the game
+      function isLose() {
+        if (hitOnScout === true && hitOnDestroyer === true && hitOnSubmarine === true && hitOnBattleship === true && hitOnCarrier === true) {
+          incrementLose = 1;
+        }
+        if (incrementLose === 1) {
+          toggleAButtonVis();
+          var disyou = document.getElementById('you');
+          var disegridhead = document.getElementById('egridhead');
+          var disygridhead = document.getElementById('ygridhead');
+          var showlose = document.getElementById('lose');
+          var tar = [disyou, disegridhead, disygridhead];
+          for (var i = 0; i < 3; i++) {
+            if (tar[i].style.display === 'none') {
+              tar[i].style.display = 'block';
+            } else {
+              tar[i].style.display = 'none';
+            }
+          }
+          if (showlose.style.display === 'none') {
+            showlose.style.display = 'block';
+          } else {
+            showlose.style.display = 'none';
+          }
+          alert('You lost.');
+          alert('NOW SHOWING IS WHERE THE ENEMY SHIPS WERE')
+          alert('LOOK ON AND CRY');
+          showEShips();
+        }
+      };
+
+      //starting the game
+      function toggleGameItems() {
+        var disyou = document.getElementById('you');
+        var disenemy = document.getElementById('enemy');
+        var disegridhead = document.getElementById('egridhead');
+        var disygridhead = document.getElementById('ygridhead');
+        var disup = document.getElementById('up');
+        var disleft = document.getElementById('left');
+        var disconfirm = document.getElementById('confirm');
+        var disright = document.getElementById('right');
+        var disdown = document.getElementById('down');
+        var tar = [disyou, disenemy, disegridhead, disygridhead, disup, disleft, disconfirm, disright, disdown];
+        for (var i = 0; i < 9; i++) {
+          if (tar[i].style.display === 'none') {
+            tar[i].style.display = 'block';
+          } else {
+            tar[i].style.display = 'none';
+          }
+        }
+      };
+
+      function hidePlay() {
+        var target = document.getElementById('play');
+        target.style.display = 'none';
+      };
+
+      function beginGame() {
+        hideWinLose();
+        makeEnemyBoard();
+        makePlayerBoard();
+        playerBeginAttack();
+        deploySelf();
+        deployEnemies();
+        hideCheatButtons();
+        toggleAButtonVis();
+        toggleGameItems();
+      };
+
+      //editing player ship locations
+      function activateScaleClickAndReadyNewShip() {
+        scaleClick();
+        readyNewShip();
+      }
+
+      //////////////////////////////////////////////////////////////////////////
+    </script>
+  </body>
+</html>

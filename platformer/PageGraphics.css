@@ -1,0 +1,12 @@
+html {
+  font-family: sans-serif;
+  background-image: url("./images/backgrounds/F11_background.png");
+  background-repeat: no-repeat;
+  background-size: 1368px 912px;
+  overflow: hidden; /*removing scroll bars*/
+}
+
+body {
+   margin: 0px;
+
+ }

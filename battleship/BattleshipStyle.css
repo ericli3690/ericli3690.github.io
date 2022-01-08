@@ -1,0 +1,129 @@
+html {
+  font-family: "Impact";
+  color: white;
+  background-color: black;
+}
+
+h1 {
+  font-weight: bold;
+  position: relative;
+  left: 300px;
+  font-size: 80px;
+  width: 600px;
+}
+
+.header {
+  position: relative;
+  left: 300px;
+  width: 800px;
+}
+
+.gridheader {
+  position: relative;
+  left: 415px;
+  width: 800px;
+}
+
+.deploySelf, .attackEnemy {
+  height: 50px;
+  width: 90px;
+  font-size: 15px;
+  position: relative;
+}
+
+.deploySelf {
+  color: lightgreen;
+  background-color: green;
+}
+
+.attackEnemy {
+  color: rgb(250, 100, 100);
+  background-color: maroon;
+}
+
+#you, #enemy {
+  border: 2px solid white;
+  position: relative;
+  left: 415px;
+}
+
+#up {
+  left: 157px;
+  bottom: 340px;
+}
+
+#left {
+  left: 50px;
+  bottom: 340px;
+}
+
+#confirm {
+  left: 157px;
+  bottom: 410px;
+  font-weight: bold;
+}
+
+#right {
+  left: 264px;
+  bottom: 480px;
+}
+
+#down {
+  left: 157px;
+  bottom: 480px;
+}
+
+#aup {
+  left: 157px;
+  bottom: 990px;
+}
+
+#aleft {
+  left: 50px;
+  bottom: 985px;
+}
+
+#fire {
+  left: 157px;
+  bottom: 1055px;
+  font-weight: bold;
+}
+
+#aright {
+  left: 264px;
+  bottom: 1125px;
+}
+
+#adown {
+  left: 157px;
+  bottom: 1120px;
+}
+
+#havefun {
+  font-weight: bold;
+}
+
+#win, #lose {
+  position: relative;
+  left: 300px;
+  bottom: 400px;
+  font-size: 250px;
+  width: 1200px;
+}
+
+#pressToShow, #pressToHide {
+  position: relative;
+  left: 790px;
+  bottom: 1025px;
+}
+
+#play {
+  font-weight: bold;
+  font-size: 250px;
+  position: relative;
+  bottom: 200px;
+  left: 300px;
+  font-family: Impact;
+  border: 2px solid blue;
+  border-radius: 15px;
+}
