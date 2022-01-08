@@ -75,6 +75,6 @@ input {
     display: none;
 }
 
-.dropdown_button {}
-
-.dropdown_child {}
+.dropdown_button:hover {
+    cursor: pointer;
+}
