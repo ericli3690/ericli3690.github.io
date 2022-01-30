@@ -396,7 +396,7 @@ function objectClicked(event) {
                             //drawing menu borders, uses arrays defined globally, see above
                             //some internal arrays:
                             var borderStarts = [50, 48, 46, 44, 42];
-                            var imageFills = ['./archived/hexonia/images/fortify.png', './archived/hexonia/images/worship.png', './archived/hexonia/images/cancel.png', './archived/hexonia/images/cleanse.png', './archived/hexonia/images/recruit.png'];
+                            var imageFills = ['/images/fortify.png', '/images/worship.png', '/images/cancel.png', '/images/cleanse.png', '/images/recruit.png'];
                             //outer: each individual menu button
                             for (var a = 0; a < 5; a++) {
                                 //inner: each border
