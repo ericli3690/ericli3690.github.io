@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./technik.css">
+    <link rel="icon" href="./assets/music-note.jpg" />
+    <title>ericli3690 | Technik</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js";
+        import { getFirestore } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-firestore.js";
+        import { getAuth } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-auth.js";
+        const firebaseConfig = {
+            apiKey: "AIzaSyA13monoeh1hztOpwzxCya-HH2I8fMXiO8",
+            authDomain: "technik-836aa.firebaseapp.com",
+            projectId: "technik-836aa",
+            storageBucket: "technik-836aa.appspot.com",
+            messagingSenderId: "641149605090",
+            appId: "1:641149605090:web:619c762ac191245b547abb"
+        };
+
+        const app = initializeApp(firebaseConfig);
+    </script>
+    <script type="module" src="./scripts/auth.js" defer></script>
+    <script type="module" src="./scripts/slider.js" defer></script>
+    <script type="module" src="./scripts/data.js" defer></script>
+    <script type="module" src="./scripts/option.js" defer></script>
+</head>
+
+<body class="documentCentered">
+    <div class="">
+        <div id="titles" class="centered">
+            <div>
+                <h1 id="title">T E C H N I K</h1>
+                <h4 id="subtitle">Piano Technical Training</h4>
+            </div>
+        </div>
+        <section id="whenSignedIn" hidden="true">
+            <div class="centered" id="userInfo">
+                <p id="currentUser">User: ---</p>
+                <button id="signOutButton">Sign Out</button>
+            </div>
+            <div class="option">
+                <h4 class="optionTitle">Key</h4>
+                <div class="centered">
+                    <div></div><div></div>
+                    <button class="leftRightButton">&#171;</button>
+                    <input class="exercise" type="text"></input>
+                    <button class="leftRightButton">&#187;</button>
+                </div>
+            </div>
+            <div class="option">
+                <h4 class="optionTitle">Scales</h4>
+                <div class="centered">
+                    <input class="selectedExerciseRadio" id="scalesRadio" type="radio" name="selectedExerciseCategory" value="Scales" checked><label class="selectedExerciseLabel" for="scalesRadio"></label>
+                    <button class="leftRightButton">&#171;</button>
+                    <input class="exercise" type="text"></input>
+                    <button class="leftRightButton">&#187;</button>
+                </div>
+            </div>
+            <div class="option">
+                <h4 class="optionTitle">Chords</h4>
+                <div class="centered">
+                    <input class="selectedExerciseRadio" id="chordsRadio" type="radio" name="selectedExerciseCategory" value="Chords"><label class="selectedExerciseLabel" for="chordsRadio"></label>
+                    <button class="leftRightButton">&#171;</button>
+                    <input class="exercise" type="text"></input>
+                    <button class="leftRightButton">&#187;</button>
+                </div>
+            </div>
+            <div class="option">
+                <h4 class="optionTitle">Arpeggios</h4>
+                <div class="centered">
+                    <input class="selectedExerciseRadio" id="arpeggiosRadio" type="radio" name="selectedExerciseCategory" value="Arpeggios"><label class="selectedExerciseLabel" for="arpeggiosRadio"></label>
+                    <button class="leftRightButton">&#171;</button>
+                    <input class="exercise" type="text"></input>
+                    <button class="leftRightButton">&#187;</button>
+                </div>
+            </div>
+            <div class="option">
+                <h4 class="optionTitle">Misc</h4>
+                <div class="centered">
+                    <input class="selectedExerciseRadio" id="miscRadio" type="radio" name="selectedExerciseCategory" value="Misc"><label class="selectedExerciseLabel" for="miscRadio"></label>
+                    <button class="leftRightButton">&#171;</button>
+                    <input class="exercise" type="text"></input>
+                    <button class="leftRightButton">&#187;</button>
+                </div>
+            </div>
+            <br />
+            <div class="option">
+                <h4 class="optionTitle">My Mastery</h4>
+                <div class="centered">
+                    <div></div><div></div>
+                    <button class="leftRightButton">&#171;</button>
+                    <div id="sliderBackground">
+                        <div id="sliderBar"></div>
+                    </div>
+                    <button class="leftRightButton">&#187;</button>
+                </div>
+            </div>
+        </section>
+        <section class="centered" id="whenSignedOut">
+            <button id="signInButton">Sign In With Google</button>
+        </section>
+    </div>
+</body>
+
+</html>

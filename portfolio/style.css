@@ -1,0 +1,272 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+/* general */
+
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+html {
+  font-family: "Montserrat", sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+/* header */
+
+.title-1 {
+  font-weight: 400;
+  font-size: 3rem;
+}
+
+.title-1:hover {
+  transform: translate(-2px, -2px);
+  text-shadow: 2px 2px grey;
+}
+
+.title-2 {
+  font-weight: 300;
+}
+
+.header {
+  position: relative;
+  margin: 8px;
+}
+
+.titles {
+  position: absolute;
+  bottom: 1rem;
+}
+
+.titles > * {
+  text-align: center;
+  margin: 1rem;
+}
+
+.my-image {
+  width: 80vmin;
+  border: 10px solid #77ef9b;
+  border-radius: 5px;
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
+  -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)))
+}
+
+/* resume */
+
+.dropdown {
+  display: block;
+  padding: 0;
+}
+
+.dropdown-button {
+  width: 80vmin;
+  height: 3rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  border: none;
+  background-color: none;
+}
+
+.dropdown-button:hover {
+  cursor: pointer;
+  background-color: white;
+  border: 1px solid black;
+  font-weight: bold;
+}
+
+.pdf {
+  border: 10px solid black;
+  border-radius: 5px;
+  width: 80vw;
+}
+
+/* bubbles */
+
+#bubblesRoot {
+  height: 100%;
+  width: 1vw;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+#bubblesRoot > .bubble {
+  border-radius: 50%;
+  display: inline-block;
+  animation-name: fall;
+  animation-timing-function: linear;
+  position: absolute;
+  z-index: -1;
+  opacity: 15%;
+}
+
+@keyframes fall {
+  0% {top: var(--bubbleSize);}
+  100% {top: 80%;}
+}
+
+/* scrollbar */
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  /* border-radius: 5px; */
+}
+
+/* handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* summary */
+
+.summaries {
+  width: 80vmin;
+}
+
+.talk-left, .talk-right {
+  font-weight: 300;
+  font-style: italic;
+  font-size: 1.5rem;
+}
+
+.talk-right {
+  text-align: right;
+  font-weight: 800;
+}
+
+.you-bet {
+  color: lightseagreen;
+}
+
+/* footer */
+
+footer {
+  background-color: rgb(51, 51, 51);
+  width: 100%;
+  margin-top: 30px;
+  padding: 40px;
+}
+
+footer > * {
+  color: white;
+  text-decoration: none;
+}
+
+.contact-link {
+  margin: 8px;
+}
+
+/* projects */
+
+hr {
+  border: 1px solid black;
+  width: 90vw;
+  margin: 20px;
+}
+
+.flex-hr {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+}
+
+.card {
+  width: 85vw;
+  margin: 20px;
+}
+
+.card-img {
+  width: 40vw;
+  border: 5px solid black;
+  border-radius: 5px;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.card-img:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 8px 8px grey;
+}
+
+.grey-box {
+  height: 10vw;
+  background-color: grey;
+}
+
+.card-title, .card-desc {
+  width: 40vw;
+  text-overflow: wrap;
+}
+
+.card-desc {
+  line-height: 2rem;
+}
+
+.on-right {
+  margin-left: 5vw;
+}
+
+.on-left {
+  margin-right: 5vw;
+  text-align: right;
+}
+
+.small-img {
+  width: 20vw;
+}
+
+@media (max-width: 800px) {
+  .flex-hr {
+    flex-direction: column;
+  }
+  .flex-hr-flip {
+    flex-direction: column-reverse;
+  }
+  .card-img, .card-title, .card-desc, .on-right, .on-left {
+    width: 80vw;
+    margin-left: 0;
+    margin-right: 0;
+    text-align: center;
+  }
+  .small-img {
+    width: 40vw;
+  }
+}
+
+/* fade in */
+
+.fade {
+  opacity: 0%;
+}
+
+.dofade {
+  opacity: 100%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .dofade {
+    transition: opacity 0.5s linear;
+  }
+}
