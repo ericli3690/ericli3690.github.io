@@ -172,6 +172,7 @@ footer {
 footer > * {
   color: white;
   text-decoration: none;
+  text-align: center;
 }
 
 .contact-link {
@@ -252,6 +253,9 @@ hr {
   }
   .small-img {
     width: 40vw;
+  }
+  .title-1 {
+    font-size: 2rem;
   }
 }
 
