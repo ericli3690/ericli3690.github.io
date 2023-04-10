@@ -156,8 +156,12 @@ body {
   font-weight: 800;
 }
 
-.you-bet {
+.seagreen-text {
   color: lightseagreen;
+}
+
+.lightgreen-text {
+  color: #77ef9b;
 }
 
 /* footer */
