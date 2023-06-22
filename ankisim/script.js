@@ -1,5 +1,5 @@
 // mathematical parameters
-let r = 2; // button pressed
+let r = 2.5; // button pressed
 let t = 10; // how many times further than c0 should be displayed
 let u1 = 1; // initial review interval
 let c0 = 30; // number of days cards are added for

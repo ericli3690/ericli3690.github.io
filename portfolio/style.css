@@ -242,6 +242,10 @@ hr {
   width: 20vw;
 }
 
+.med-img {
+  width: 30vw;
+}
+
 @media (max-width: 800px) {
   .flex-hr {
     flex-direction: column;
