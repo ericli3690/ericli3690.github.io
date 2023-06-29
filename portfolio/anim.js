@@ -1,5 +1,5 @@
 const spawnFrequency = 500; // ms
-const slowestSpeed = 10; // s
+const slowestSpeed = 20; // s
 const speedRange = 5; // maxSpeed is this amount of seconds greater than slowestSpeed
 const maxSize = 100;
 
@@ -17,7 +17,7 @@ function spawnBubble() {
   bubble.style.setProperty('animation-duration', (speed+2).toString() + "s");
   bubble.style.setProperty('width', size);
   bubble.style.setProperty('height', size);
-  bubble.style.setProperty('--bubbleSize', size * -1); // spawn below bottom of screen
+  bubble.style.setProperty('--bubbleSize', size * -1);
   bubble.style.setProperty('background-color', 'rgb(' + (Math.random() * 255).toString() + ', ' + 255 + ', ' + (Math.random() * 100 + 155).toString() + ')');
 
   document.getElementById("bubblesRoot").appendChild(bubble);
@@ -35,7 +35,7 @@ function deleteBubbleGradually(bubble) {
   setTimeout(() => {
     clearInterval(lowerOpacityInterval);
     bubble.remove();
-  }, 3000);
+  }, 10000);
 }
 
 setInterval(spawnBubble, spawnFrequency);

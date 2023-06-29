@@ -108,12 +108,12 @@ body {
   animation-timing-function: linear;
   position: absolute;
   z-index: -1;
-  opacity: 15%;
+  opacity: 25%;
 }
 
 @keyframes fall {
   0% {top: var(--bubbleSize);}
-  100% {top: 80%;}
+  100% {top: 90%;}
 }
 
 /* scrollbar */
