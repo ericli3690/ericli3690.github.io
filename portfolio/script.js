@@ -38,7 +38,7 @@ $(document).ready(() => {
     },
     {
       title: `"Tie-d Together" - An React application`,
-      desc: `Together with some of my friends in Katy, Texas, I'm working on a React app to help band students find musical tutors. Music is one of my passions, and this is one of the ways I'm connecting with it! Currently, my goal with this project is to learn more about React and build more familiarity with the framework...`,
+      desc: `Together with some of my friends in Katy, Texas, I'm working on a React app to help band students find musical tutors. Music is one of my passions, and this is one of the ways I'm connecting with it! Currently, my goal with this project is to learn more about React and build more familiarity with the framework... Check it out on <a href="https://github.com/tiedtogether/tiedtogether.github.io">Github</a>!`,
       img: `./projects/tiedtogether.png`,
       imgSize: `large-img`
     },
