@@ -14,7 +14,7 @@ $(document).ready(() => {
   [
     {
       title: `"The Trees" - Third Place at Simplihacks 2.0!`,
-      desc: `Me and a friend, Gautham Venkateshwaran, created a MERN app as a submission to a hackathon. Its goal was to essentially make environmental charity fun, and we managed to snatch third place! I mostly worked on the front-end, using HTML, CSS, and React. Check it out on <a href="https://devpost.com/software/the-trees">Devpost</a>!`,
+      desc: `Me and a friend, Gautham Venkateshwaran, created a MERN app as a submission to a hackathon. Its goal was to essentially make environmental charity fun, and we managed to snatch third place against over 400 other participants! I mostly worked on the front-end, using HTML, CSS, and React. Check it out on <a href="https://devpost.com/software/the-trees">Devpost</a>!`,
       img: `./projects/LeafView.png`,
       imgSize: `large-img`
     },
@@ -25,8 +25,14 @@ $(document).ready(() => {
       imgSize: `small-img`
     },
     {
+      title: `"RubbleRecon" - Third Place at STEMist Hacks II!`,
+      desc: `Teaming up with my friend Gautham Venkateshwaran again, we won third place at yet another hackathon, this one with over 600 participants! The idea was to create an integrated hardware and software solution that could help first responders perform autonomous robotic search-and-rescue missions. I once again worked on gaining experience with React, building the entire frontend in NextJS and TailwindCSS by myself. Gautham handled the hardware. 😉 Take a look on <a href="https://devpost.com/software/rubblerecon">Devpost</a>!`,
+      img: `./projects/rubble.png`,
+      imgSize: `large-img`
+    },
+    {
       title: `Using Python to increase efficiency as a Marketing Assistant at Calgary Taichi and Martial Arts College`,
-      desc: `Currently, I'm working on an on-call basis with the <a href="https://www.calgarytaichi.com/">Calgary Taichi and Martial Arts College</a>. One of my responsibilities is to design posters, emails, and certificates for the over 400 students who attend the college. I also manage the student database and often have to sift through and print off student records. Lately, I've been using my programming experience in Python to streamline these processes, finding ways to increase efficiency by programmatically generating report cards and am experimenting with the python <em>pandas</em> library to manage data!`,
+      desc: `I previously worked on an on-call basis with the <a href="https://www.calgarytaichi.com/">Calgary Taichi and Martial Arts College</a>. One of my responsibilities was to design posters, emails, and certificates for its over 400 students. I also managed the student database and often had to sift through and print off student records. To streamline these processes, I often used my programming experience in Python, such as by programmatically generating report cards and using the Python <em>pandas</em> library to manage data!`,
       img: `./projects/caitaichi.png`,
       imgSize: `large-img`
     },
@@ -38,7 +44,7 @@ $(document).ready(() => {
     },
     {
       title: `"Tie-d Together" - An React application`,
-      desc: `Together with some of my friends in Katy, Texas, I'm working on a React app to help band students find musical tutors. Music is one of my passions, and this is one of the ways I'm connecting with it! Currently, my goal with this project is to learn more about React and build more familiarity with the framework... Check it out on <a href="https://github.com/tiedtogether/tiedtogether.github.io">Github</a>!`,
+      desc: `With some of my friends in Katy, Texas, I'm working on a React app to help band students find musical tutors. Music is one of my passions, and this is one of the ways I'm connecting with it! Currently, my goal with this project is to learn more about React and build more familiarity with the framework... Check it out on <a href="https://github.com/tiedtogether/tiedtogether.github.io">Github</a>!`,
       img: `./projects/tiedtogether.png`,
       imgSize: `large-img`
     },
