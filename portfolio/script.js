@@ -13,10 +13,10 @@ $(document).ready(() => {
 
   [
     {
-      title: `"The Trees" - Third Place at Simplihacks 2.0!`,
-      desc: `Me and a friend, Gautham Venkateshwaran, created a MERN app as a submission to a hackathon. Its goal was to essentially make environmental charity fun, and we managed to snatch third place against over 400 other participants! I mostly worked on the front-end, using HTML, CSS, and React. Check it out on <a href="https://devpost.com/software/the-trees">Devpost</a>!`,
-      img: `./projects/LeafView.png`,
-      imgSize: `large-img`
+      title: `"Seedpod" - First Place at a University-Level Hackathon`,
+      desc: `Together with three of my friends, I won $5000 🤑 and first place at the University of Calgary's "Hack the Change 2023", an in-person coding competition against almost 300 other contestants! We invented a modular plant pot product and I helped by creating the NextJS frontend, designing the user interface, and integrating Firebase. Check it out <a href="https://devpost.com/software/seedpod-empowering-individual-agriculture">here</a>!`,
+      img: `./projects/seedpod.png`,
+      imgSize: `med-img`
     },
     {
       title: `"Spontaneity" - An Android application`,
@@ -25,15 +25,21 @@ $(document).ready(() => {
       imgSize: `small-img`
     },
     {
-      title: `"RubbleRecon" - Third Place at STEMist Hacks II!`,
-      desc: `Teaming up with my friend Gautham Venkateshwaran again, we won third place at yet another hackathon, this one with over 600 participants! The idea was to create an integrated hardware and software solution that could help first responders perform autonomous robotic search-and-rescue missions. I once again worked on gaining experience with React, building the entire frontend in NextJS and TailwindCSS by myself. Gautham handled the hardware. 😉 Take a look on <a href="https://devpost.com/software/rubblerecon">Devpost</a>!`,
-      img: `./projects/rubble.png`,
+      title: `Using Python to increase efficiency as a Marketing Assistant`,
+      desc: `I previously worked on an on-call basis with the <a href="https://www.calgarytaichi.com/">Calgary Taichi and Martial Arts College</a>. One of my responsibilities was to design posters, emails, and certificates for its over 400 students. I also managed the student database and often had to sift through and print off student records. To streamline these processes, I often used my programming experience in Python, such as by programmatically generating report cards and using the Python <em>pandas</em> library to manage data!`,
+      img: `./projects/caitaichi.png`,
       imgSize: `large-img`
     },
     {
-      title: `Using Python to increase efficiency as a Marketing Assistant at Calgary Taichi and Martial Arts College`,
-      desc: `I previously worked on an on-call basis with the <a href="https://www.calgarytaichi.com/">Calgary Taichi and Martial Arts College</a>. One of my responsibilities was to design posters, emails, and certificates for its over 400 students. I also managed the student database and often had to sift through and print off student records. To streamline these processes, I often used my programming experience in Python, such as by programmatically generating report cards and using the Python <em>pandas</em> library to manage data!`,
-      img: `./projects/caitaichi.png`,
+      title: `"The Trees" - Third Place at Simplihacks 2.0!`,
+      desc: `Me and a friend, Gautham Venkateshwaran, created a MERN app as a submission to a hackathon. Its goal was to essentially make environmental charity fun, and we managed to snatch third place against over 400 other participants! I mostly worked on the front-end, using HTML, CSS, and React. Check it out on <a href="https://devpost.com/software/the-trees">Devpost</a>!`,
+      img: `./projects/LeafView.png`,
+      imgSize: `large-img`
+    },
+    {
+      title: `"RubbleRecon" - Third Place at STEMist Hacks II!`,
+      desc: `Teaming up with my friend Gautham Venkateshwaran again, we won third place at yet another hackathon, this one with over 600 participants! The idea was to create an integrated hardware and software solution that could help first responders perform autonomous robotic search-and-rescue missions. I once again worked on gaining experience with React, building the entire frontend in NextJS and TailwindCSS by myself. Gautham handled the hardware. 😉 Take a look on <a href="https://devpost.com/software/rubblerecon">Devpost</a>!`,
+      img: `./projects/rubble.png`,
       imgSize: `large-img`
     },
     {
