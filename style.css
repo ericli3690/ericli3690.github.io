@@ -17,6 +17,10 @@ body {
   margin: 0;
 }
 
+a {
+  color: lightseagreen;
+}
+
 a:visited {
   color: lightseagreen;
 }

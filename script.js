@@ -38,7 +38,7 @@ $(document).ready(() => {
     },
     {
       title: `"LifeLink" - First Place at MediHacks2024`,
-      desc: `Me and a friend, <a href="https://gauthamv6002.github.io/">Gautham Venkateshwaran</a>, teamed up for the week-long hackathon MediHacks2024 and managed to clinch first place! I created an entire ReactNative and TailwindCSS mobile app for first responders from the ground up, incorporating Firebase along with the Google Maps and Nominatim API. Here's the <a href="https://devpost.com/software/lifelink-24fd3g">Devpost</a>!`,
+      desc: `Together with my friend, <a href="https://gauthamv6002.github.io/">Gautham Venkateshwaran</a>, I clinched first place at the week-long hackathon MediHacks2024! I created an entire ReactNative and TailwindCSS mobile app for first responders from the ground up, incorporating Firebase along with the Google Maps and Nominatim API. Here's the <a href="https://devpost.com/software/lifelink-24fd3g">Devpost</a>!`,
       img: `./projects/lifelink.jpg`,
       imgSize: 'small-img'
     },
