@@ -2,6 +2,8 @@
 
 /* general */
 
+html { scroll-behavior: smooth; }
+
 html, body {
   max-width: 100%;
   overflow-x: hidden;
@@ -13,6 +15,10 @@ html {
 
 body {
   margin: 0;
+}
+
+a:visited {
+  color: lightseagreen;
 }
 
 .flex {
@@ -147,17 +153,24 @@ body {
 
 .talk-left, .talk-right {
   font-weight: 300;
-  font-style: italic;
+  /* font-style: italic; */
   font-size: 1.5rem;
+}
+
+.talk-left {
+  font-style: italic;
 }
 
 .talk-right {
   text-align: right;
-  font-weight: 800;
 }
 
 .seagreen-text {
   color: lightseagreen;
+}
+
+.read-on {
+  font-weight: 800;
 }
 
 .lightgreen-text {

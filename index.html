@@ -1,68 +1,63 @@
-<!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="./index.css">
-    <link rel="icon" href="./assets/images/profile_picture_1.jpg" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="./index.js"></script>
-    <title>ericli3690 | index</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="./style.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="./script.js"></script>
+  <script src="./anim.js"></script>
+  <link rel="icon" href="./profile_picture_2.jpg" />
+  <title>Song (Eric) Yu Li</title>
 </head>
+<body class="flex">
+  
+  <header class="header flex">
+    <img class="my-image" src="./EricImg.jpg" />
+    <titletext class="titles">
+      <h1 class="title-1">Hi, I'm<br><strong>Song Yu Li</strong></h1>
+      <h3 class="title-2">But you can call me <strong>Eric</strong> 😊</h3>
+    </titletext>
+  </header>
 
-<body>
-    <div class="centered">
-        <div id="main" class="main_div">
-            <h1>index 👇</h1>
-            <h3>welcome to the digital hub for ericli3690</h3>
-            <ul id="projects" class="">
-                <li id="current"><a href="./portfolio/index.html">▶ resume and portfolio</a></li>
-                <li id="coming_soon">
-                    <input class="dropdown_button" type="button" value="➡ upcoming..." /><br>
-                    <ul class="dropdown">
-                        <li class="dropdown_child"><a class="greyed">▶ navigation (coming soon)</a></li>
-                        <li class="dropdown_child"><a class="greyed">▶ quarterly (coming soon)</a></li>
-                        <li class="dropdown_child"><a class="greyed">▶ technik (coming soon)</a></li>
-                    </ul>
-                </li>
-                <!--
-                <li id="old">
-                    <input class="dropdown_button" type="button" value="➡ old projects..." />
-                    <ul class="dropdown">
-                        <li class="dropdown_child"><a href="./archived/hexonia/index.html">▶ hexonia</a></li>
-                        <li class="dropdown_child"><a href="./archived/battleship/index.html">▶ battleship</a></li>
-                        <li class="dropdown_child"><a href="./archived/platformer/index.html">▶ platformer</a></li>
-                        <li class="dropdown_child"><a href="./archived/level-designer/index.html">▶ designer</a></li>
-                    </ul>
-                </li>
-                -->
-            </ul>
-            <ul id="contact"></ul>
-        </div>
-    </div>
+  <summary class="summaries">
+    <h3 class="talk-right">I'm a <strong>Computer Science</strong> student at the <strong>University of Waterloo</strong> currently looking for a <strong>Summer 2025 internship</strong>! Welcome to my portfolio.</h3>
+    <h4 class="talk-left">Want to jump straight to my resume and contact information?</h4>
+    <h4 class="talk-right seagreen-text read-on"><a href="#resume-start">Click here!</a></h4>
+    <h4 class="talk-left">Hoping to take the scenic route there instead?</h4>
+    <!-- <h4 class="talk-right">Sure.</h4> -->
+    <!-- <h4 class="talk-left">But do I make up for it on passion, strive to learn something new everyday, and work to punch above my age level?</h4> -->
+    <h4 class="talk-right seagreen-text read-on">Read on... 😉</h4>
+    <!-- <h3 class="summary-2">Here's my progress so far... 😉</h3> -->
+  </summary>
+
+  <hr>
+
+  <projects class="projects flex"></projects>
+
+  <br>
+
+  <resume class="flex" id="resume-start">
+    <input class="dropdown-button" type="button" value="⬇ see my resume" />
+    <ul class="dropdown">
+      <object class="pdf" data="./SongEricYuLiResumeSeptember2024.pdf" type="application/pdf" width="750px" height="750px">
+          <embed src="./SongEricYuLiResumeSeptember2024.pdf" type="application/pdf">
+              <p>This browser does not support PDFs. Please download the PDF to view it: <a href="./SongEricYuLiResumeSeptember2024.pdf">Download PDF</a>.</p>
+          </embed>
+      </object>
+    </ul>
+  </resume>
+
+  <footer class="flex">
+    <h3>Thanks for taking the time to read my portfolio and resume.</h3>
+    <h3 class="lightgreen-text">I'm open to work and actively searching for internships.<br />Feel free to <strong>contact me!</strong></h3>
+    <a class="contact-link" href="ericli3690@gmail.com">➡ <strong>email</strong>: ericli3690@gmail.com</a>
+    <p class="contact-link">➡ <strong>call/text</strong>: (403)-561-6028</p>
+    <a class="contact-link" href="https://github.com/ericli3690">➡ <strong>github</strong>: https://github.com/ericli3690</a>
+    <a class="contact-link" href="https://www.linkedin.com/in/song-yu-li/">➡ <strong>linkedin</strong>: https://www.linkedin.com/in/song-yu-li/</a>
+  </footer>
+
+  <div id="bubblesRoot"></div>
+
 </body>
-
 </html>
-
-<!--
-
-TODO
-HOME-like animation, dynamic background, images for each project, gradient, clock, fadein
-hover for desc
-contact: https://fontawesome.com/
-
--->
-
-<!--
-
-to insert a backToIndex button, insert this block right after the html starting body tag
-
-<button id="backToIndex" onclick="location.href='../index.html'">&lt; index</button>
-<style>
-#backToIndex {position:absolute;left:-8px;top:-16px;font-family:sans-serif;font-weight:500;font-size:10px;border:none;border-radius: 4px;}
-#backToIndex:hover {cursor: pointer;}
-</style>
-
--->
