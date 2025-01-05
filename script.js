@@ -14,15 +14,15 @@ $(document).ready(() => {
   [
     {
       title: `"Chronicler": Gamified History`,
-      desc: `Over the course of a year, I designed, planned, and programmed a history flashcards game Android mobile app for students called "Chronicler"! My tools of choice were Java in Android Studio along with libraries such as Google GSON. I made a concerted effort to make the app's codebase clearly organized and also tested my theoretical computer science skills by implementing techniques such as heaps and heap sort in the application.`,
+      desc: `Over the course of 9 months, I designed, planned, and programmed a history flashcards game Android mobile app for students called "Chronicler"! My tools of choice were Java in Android Studio along with libraries such as Google GSON. I made a concerted effort to make the app's codebase clearly organized and also tested my theoretical computer science skills by implementing techniques such as heaps and heap sort in the application.`,
       img: `./projects/chronicler.jpg`,
       imgSize: `small-img`
     },
     {
-      title: `"Spontaneity" - An Android application`,
-      desc: `This was a mobile reminders application I made in Android Studio using Java for a school assignment (I went a bit overboard 😋). I'm quite proud of it and learned a lot about Java, Android, and UI/UX design while working on it. It's not on the app store yet, though: there's a few more stubborn bugs hiding in the code I need to squish.`,
-      img: `./projects/spontaneity.jpg`,
-      imgSize: `small-img`
+      title: `Midnight Sun Solar Car Design Team - Strategy Subteam`,
+      desc: `I'm currently a member of the University of Waterloo's solar car design team, working on designing a strategy for the upcoming race. I've mainly used Python so far but have also been learning a lot about AWS, PostgreSQL, and cloud databases. My next task is to integrate irradiance data into the project...`,
+      img: `./projects/midsuntwo.png`,
+      imgSize: `med-img`
     },
     {
       title: `"Seedpod" - First Place at a University-Level Hackathon`,
@@ -31,8 +31,26 @@ $(document).ready(() => {
       imgSize: `med-img`
     },
     {
+      title: `Python Packages and Projects`,
+      desc: `Over the years, I've created many projects in Python for fun to help me understand and learn the language. For example, <a href="https://github.com/ericli3690/PollProject2">here's</a> a script I wrote to help others programmatically generate and conduct polls. I've also published two Python packages, which you can check out <a href="https://pypi.org/project/esoteric-sigdigs/">here</a> and <a href="https://pypi.org/project/terminaltools/0.1.1/">here</a>!`,
+      img: `./projects/poll.png`,
+      imgSize: `med-img`
+    },
+    {
+      title: `Finalist at ASNA Case Competition / Hackathon`,
+      desc: `Together with three of my friends, I placed as a finalist in the ASNA Case Competition / Hackathon! We trained multiple machine learning models to predict insurance claim data using Python and <em>pandas</em>, eventually settling on an XGBoost decision tree model.`,
+      img: `./projects/asna.png`,
+      imgSize: `med-img`
+    },
+    {
+      title: `"Spontaneity" - An Android application`,
+      desc: `This was a mobile reminders application I made in Android Studio using Java for a school assignment (I went a bit overboard 😋). I'm quite proud of it and learned a lot about Java, Android, and UI/UX design while working on it. It's not on the app store yet, though: there's a few more stubborn bugs hiding in the code I need to squish.`,
+      img: `./projects/spontaneity.jpg`,
+      imgSize: `small-img`
+    },
+    {
       title: `Using Python to increase efficiency as a Marketing Assistant`,
-      desc: `I previously worked on an on-call basis with the <a href="https://www.calgarytaichi.com/">Calgary Taichi and Martial Arts College</a>. One of my responsibilities was to design posters, emails, and certificates for its over 400 students. I also managed the student database and often had to sift through and print off student records. To streamline these processes, I often used my programming experience in Python, such as by programmatically generating report cards and using the Python <em>pandas</em> library to manage data!`,
+      desc: `I previously worked on an on-call basis with the <a href="https://www.calgarytaichi.com/">Calgary Taichi and Martial Arts College</a>. One of my responsibilities was to design posters, emails, and certificates for its over 400 students. I also managed the student database and often had to sift through and print off student records. To streamline these processes, I used my programming experience in Python, such as by programmatically generating report cards via the <em>python-pptx</em> library!`,
       img: `./projects/caitaichi.png`,
       imgSize: `large-img`
     },
@@ -53,12 +71,6 @@ $(document).ready(() => {
       desc: `With some of my friends in Katy, Texas, I'm working on a React app to help band students find musical tutors. Music is one of my passions, and this is one of the ways I'm connecting with it! Currently, my goal with this project is to learn more about React and build more familiarity with the framework... Check it out on <a href="https://github.com/tiedtogether/tiedtogether.github.io">Github</a>!`,
       img: `./projects/tiedtogether.png`,
       imgSize: `large-img`
-    },
-    {
-      title: `Python Packages and Projects`,
-      desc: `Over the years, I've created many projects in Python for fun to help me understand and learn the language. For example, <a href="https://github.com/ericli3690/PollProject2">here's</a> a script I wrote to help others programmatically generate and conduct polls. I've also published two Python packages, which you can check out <a href="https://pypi.org/project/esoteric-sigdigs/">here</a> and <a href="https://pypi.org/project/terminaltools/0.1.1/">here</a>!`,
-      img: `./projects/poll.png`,
-      imgSize: `med-img`
     },
     {
       title: `"The Trees" - Third Place at Simplihacks 2.0!`,
