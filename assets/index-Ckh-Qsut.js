@@ -3885,7 +3885,7 @@ void main() {
 [n][n]
 [t][t][b:4.] But most of all, I’m ready to deliver [b:high-dedication work]. I believe my greatest weakness right now is that my resume doesn't have enough machine learning experiences on it. Luckily, the next time I’m free for an internship is January or May 2026, and I haven’t decided what side project to devote myself to for this fall yet…
 [n][n]
-[t][t]In short: I’d love to hop on a brief call and figure out what things I should learn between now and next year to better position myself for an opportunity at Toma. Or, if you’re not hiring interns right now, I’d even just love to ask for advice, chat, and learn what makes a startup tick!
+[t][t]In short: I’d love to hop on a brief call and figure out what things I should learn between now and next year to better position myself for an opportunity at Toma. Or, if you’re not hiring interns right now, I’d even just love to ask for advice, chat, and learn what makes Toma tick!
 [n][n]
 [t][t]My full portfolio, resume, and contact info are below. Looking forward to hearing from you,
 [n][n]
