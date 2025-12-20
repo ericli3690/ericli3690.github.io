@@ -246,8 +246,8 @@ function App() {
         <div className="resume-container">
           <h3 className="fade-in-2" ref={resumeHeaderRef}>Resume</h3>
           <div className="resume">
-            <object className="pdf" data={resumePDF} type="application/pdf" width="100%" height="820px" style={{zIndex: 1}}>
-              <embed src={resumePDF} type="application/pdf" />
+            <object className="pdf" data={resumePDF}>
+              <embed src={resumePDF} />
               <p className="pdf-warning">This browser does not support PDFs. Please <a href={resumePDF} download>download the PDF</a> to view it.</p>
             </object>
           </div>

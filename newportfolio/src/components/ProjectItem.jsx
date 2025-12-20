@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 // Method to handle rich text formatting
 export const renderRichText = (text) => {
   if (!text) return null;
-  console.log(text)
 
   // Process the text sequentially for all formatting types
   const processedText = [];
