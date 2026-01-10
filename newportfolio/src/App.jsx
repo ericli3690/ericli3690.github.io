@@ -3,7 +3,7 @@ import profilePicture from './assets/profile_picture_1.jpg'
 import profilePictureBack from './assets/SongEricYuLiZoomedIn.jpg'
 import BackgroundSphere from './components/BackgroundSphere.jsx'
 import projectsData from './projects.js';
-import resumePDF from './assets/PortfolioAugust2025Resume.pdf';
+import resumePDF from './assets/SongEricYuLiResumeJanuary2026.pdf';
 import ProjectItem, { renderRichText } from './components/ProjectItem.jsx';
 import skillsData from './skills.js';
 import { toma } from './coverletters.js';
@@ -198,7 +198,7 @@ function App() {
         <div className="by-lines">
           <p className="by-line right-pulse-dot dark-yellow">&rarr;&nbsp; Computer Science student at <a href="https://uwaterloo.ca/" target="_blank" rel="noopener noreferrer" className="inline hover-offset yellow-text bolded">UWaterloo</a>.</p>
           <p className="by-line right-pulse-dot dark-blue">&rarr;&nbsp; Previously at <a href="https://www.ford.com/" target="_blank" rel="noopener noreferrer" className="inline hover-offset blue-text bolded">Ford</a>, <a href="https://summerofcode.withgoogle.com/" target="_blank" rel="noopener noreferrer" className="inline hover-offset blue-text bolded">GSoC</a>.</p>
-          <p className="by-line right-pulse-dot dark-red">&rarr;&nbsp; Incoming Software Engineer Intern at <a href="https://www.toma.com/" target="_blank" rel="noopener noreferrer" className="inline hover-offset red-text bolded">Toma</a>.</p>
+          <p className="by-line right-pulse-dot dark-red">&rarr;&nbsp; Software Engineer Intern at <a href="https://www.toma.com/" target="_blank" rel="noopener noreferrer" className="inline hover-offset red-text bolded">Toma</a>.</p>
         </div>
 
         <div className="cover-letter-container">
