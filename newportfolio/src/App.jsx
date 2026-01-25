@@ -3,7 +3,7 @@ import profilePicture from './assets/profile_picture_1.jpg'
 import profilePictureBack from './assets/SongEricYuLiZoomedIn.jpg'
 import BackgroundSphere from './components/BackgroundSphere.jsx'
 import projectsData from './projects.js';
-import resumePDF from './assets/SongEricYuLiResumeJanuary2026.pdf';
+import resumePDF from './assets/PortfolioJan2026SecondResume.pdf';
 import ProjectItem, { renderRichText } from './components/ProjectItem.jsx';
 import skillsData from './skills.js';
 import { toma } from './coverletters.js';
