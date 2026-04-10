@@ -17,3 +17,17 @@ export const toma = `
 [n][n]
 [b:~ Eric]
 `
+
+export const sentry = `
+[b:To Sentry's Hiring Manager,]
+[n][n]
+[t][t]Hello! My name is Eric. I'm currently wrapping up an internship at Toma, an a16z-funded Series A startup where I've been the project lead for multiple initiatives, from re-inventing a core outbound messaging product to modernizing their inbound product's dashboards and reporting. Toma uses Sentry... a bit. I asked the CTO why we don't use it more, and he answered that Toma isn't at the scale where it's necessary yet.
+[n][n]
+[t][t]That got me thinking: how exactly does Sentry's application monitoring handle the deluge of logs, spans, and session replays from sources all around the world? What kind of engineering goes into making that work? Building that kind of load-bearing software is the reason I became interested in working at Toma; it's the reason that I got into open source development at AnkiDroid; heck, it's the reason I started coding in the first place: to build smart tools that make other people's lives easier and more fun.
+[n][n]
+[t][t]Having the privilege of responsibility at Toma has been a fantastic experience so far, and I would love to explore how I can contribute to Sentry, too.
+[n][n]
+[t][t]My full portfolio, resume, and contact info are below. Looking forward to hearing from you!
+[n][n]
+[b:~ Eric]
+`

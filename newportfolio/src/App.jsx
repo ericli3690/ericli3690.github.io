@@ -3,10 +3,9 @@ import profilePicture from './assets/profile_picture_1.jpg'
 import profilePictureBack from './assets/SongEricYuLiZoomedIn.jpg'
 import BackgroundSphere from './components/BackgroundSphere.jsx'
 import projectsData from './projects.js';
-import resumePDF from './assets/PortfolioJan2026SecondResume.pdf';
+import resumePDF from './assets/SongEricYuLiResumeApr2026.pdf';
 import ProjectItem, { renderRichText } from './components/ProjectItem.jsx';
-import skillsData from './skills.js';
-import { toma } from './coverletters.js';
+import { toma, sentry } from './coverletters.js';
 
 function App() {
   const [showIndicator, setShowIndicator] = useState(true);
@@ -197,12 +196,13 @@ function App() {
 
         <div className="by-lines">
           <p className="by-line right-pulse-dot dark-yellow">&rarr;&nbsp; Computer Science student at <a href="https://uwaterloo.ca/" target="_blank" rel="noopener noreferrer" className="inline hover-offset yellow-text bolded">UWaterloo</a>.</p>
-          <p className="by-line right-pulse-dot dark-blue">&rarr;&nbsp; Previously at <a href="https://www.ford.com/" target="_blank" rel="noopener noreferrer" className="inline hover-offset blue-text bolded">Ford</a>, <a href="https://summerofcode.withgoogle.com/" target="_blank" rel="noopener noreferrer" className="inline hover-offset blue-text bolded">GSoC</a>.</p>
-          <p className="by-line right-pulse-dot dark-red">&rarr;&nbsp; Software Engineer Intern at <a href="https://www.toma.com/" target="_blank" rel="noopener noreferrer" className="inline hover-offset red-text bolded">Toma</a>.</p>
+          <p className="by-line right-pulse-dot dark-red">&rarr;&nbsp;Award winner at <a href="https://devpost.com/ericli3690" target="_blank" rel="noopener noreferrer" className="inline red-text hover-offset bolded">six hackathons</a>.</p>
+          <p className="by-line right-pulse-dot dark-blue">&rarr;&nbsp; Previously at <a href="https://www.ford.com/" target="_blank" rel="noopener noreferrer" className="inline hover-offset blue-text bolded">Ford</a>, <a href="https://summerofcode.withgoogle.com/" target="_blank" rel="noopener noreferrer" className="inline hover-offset blue-text bolded">GSoC</a>, and <a href="https://toma.com/" target="_blank" rel="noopener noreferrer" className="inline hover-offset blue-text bolded">Toma</a>.</p>
         </div>
 
         <div className="cover-letter-container">
           <p className="cover-letter">{renderRichText(window.location.search.substring(1).split('&')[0] === 'toma' ? toma : '')}</p>
+          <p className="cover-letter">{renderRichText(window.location.search.substring(1).split('&')[0] === 'sentry' ? sentry : '')}</p>
         </div>
 
         <div className="content-container">
@@ -217,18 +217,8 @@ function App() {
           </div>
         </div>
 
-        <div className="skills-container">
+        {/* <div className="skills-container">
           <h3 className="fade-in-2" ref={skillsHeaderRef}>Skills</h3>
-          {/* <div className="skills-grid">
-            {skillsData.map((skill, index) => (
-              <div className="skill-item" key={index}>
-                <div className="skill-icon">
-                  <img src={skill.image} alt={skill.title} />
-                </div>
-                <div className="skill-name">{skill.title}</div>
-              </div>
-            ))}
-          </div> */}
           <div className="skills-list-container">
             <div className="skills-list">
               {skillsData.map((skill, index) => (
@@ -241,7 +231,7 @@ function App() {
               ))}
             </div>
           </div>
-        </div>
+        </div> */}
         
         <div className="resume-container">
           <h3 className="fade-in-2" ref={resumeHeaderRef}>Resume</h3>
