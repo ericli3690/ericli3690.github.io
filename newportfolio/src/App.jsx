@@ -3,6 +3,7 @@ import profilePicture from './assets/profile_picture_1.jpg'
 import profilePictureBack from './assets/profile_picture_1.jpg'
 import BackgroundSphere from './components/BackgroundSphere.jsx'
 import projectsData from './projects.js';
+import experienceData from './experience.js';
 import resumePDF from './assets/SongEricYuLiResumeApr2026.pdf';
 import ProjectItem, { renderRichText } from './components/ProjectItem.jsx';
 import { toma, sentry } from './coverletters.js';
@@ -17,13 +18,15 @@ function App() {
   const [signatureAnimated, setSignatureAnimated] = useState(false);
 
   const projectsHeaderRef = useRef(null);
+  const experienceHeaderRef = useRef(null);
   const resumeHeaderRef = useRef(null);
     const contactHeaderRef = useRef(null);
   const skillsHeaderRef = useRef(null);
   const signatureRef = useRef(null);
   
-  // Create refs for each project item
-  const projectRefs = useRef(projectsData.map(() => createRef()));
+  // Create refs for each project item (experience + projects)
+  const allItems = [...experienceData, ...projectsData];
+  const projectRefs = useRef(allItems.map(() => createRef()));
 
   const handleNameClick = () => {
     setShowChineseName(true);
@@ -195,7 +198,7 @@ function App() {
   // h3 scroll effect
   useEffect(() => {
     const handleScroll = () => {
-      const headers = [projectsHeaderRef, skillsHeaderRef, resumeHeaderRef];
+      const headers = [experienceHeaderRef, projectsHeaderRef, skillsHeaderRef, resumeHeaderRef];
       // Trigger when the element's top is above this point in the viewport
       const triggerPointOne = window.innerHeight * 0.4;
       const triggerPointTwo = window.innerHeight * 0.7;
@@ -265,12 +268,22 @@ function App() {
         </div>
 
         <div className="content-container">
+          <h3 className="fade-in-2" ref={experienceHeaderRef}>Experience</h3>
+          
+          <div className="projects-container fade-in-3">
+            {experienceData.map((item, index) => (
+              <div key={index} ref={projectRefs.current[index]}>
+                <ProjectItem project={item} index={index} />
+              </div>
+            ))}
+          </div>
+          
           <h3 className="fade-in-2" ref={projectsHeaderRef}>Projects</h3>
           
           <div className="projects-container fade-in-3">
             {projectsData.map((project, index) => (
-              <div key={index} ref={projectRefs.current[index]}>
-                <ProjectItem project={project} index={index} />
+              <div key={index + experienceData.length} ref={projectRefs.current[index + experienceData.length]}>
+                <ProjectItem project={project} index={index + experienceData.length} />
               </div>
             ))}
           </div>
@@ -378,7 +391,7 @@ function App() {
 
       {showIndicator && (
         <div className="right-scroll-indicator" style={{ right: sideOffset }}>
-          {projectsData.map((_, index) => (
+          {allItems.map((_, index) => (
             <div 
               key={index} 
               className={`right-scroll-dot ${activeProjectIndex === index ? 'active' : ''}`}
