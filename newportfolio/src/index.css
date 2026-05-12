@@ -165,12 +165,12 @@ p:focus {
 
 .profile-picture {
   transform: rotateY(0deg);
-  animation: initialFrontSpin 3s ease-in-out;
+  /* animation: initialFrontSpin 3s ease-in-out; */
 }
 
 .profile-picture-back {
   transform: rotateY(180deg);
-  animation: initialBackSpin 3s ease-in-out;
+  /* animation: initialBackSpin 3s ease-in-out; */
 }
 
 @keyframes initialFrontSpin {
@@ -1106,4 +1106,37 @@ h3.scrolled-past::after {
 
 .cover-letter {
   line-height: 2;
+}
+
+.contact-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.signature {
+  height: 15%;
+  width: 40%;
+  margin-left: auto;
+}
+
+.signature-stroke {
+  stroke: #4a90e2;
+  stroke-dasharray: 1081;
+  stroke-dashoffset: 1081;
+  stroke-width: 2px;
+}
+
+@keyframes drawSignature {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fadeOutSignature {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }

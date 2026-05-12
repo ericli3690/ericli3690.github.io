@@ -5,12 +5,22 @@ import Chronicler from "./assets/ChroniclerCloudy.png";
 import MidSun from "./assets/MidSun.png";
 import Spontaneity from "./assets/Spontaneity.png";
 import Asna from "./assets/Asna.png";
-import WaterlooDates from "./assets/WaterlooDates.png";
-import RubbleRecon from "./assets/RubbleRecon.png";
-import TheTrees from "./assets/TheTrees.png";
+// import WaterlooDates from "./assets/WaterlooDates.png";
+// import RubbleRecon from "./assets/RubbleRecon.png";
+// import TheTrees from "./assets/TheTrees.png";
 import Python from "./assets/Python.png";
+import Ford from "./assets/FordPortfolio.png";
+import Toma from "./assets/TomaPortfolio.png";
 
 const projectsData = [
+    {
+        title: "Toma",
+        description: `Lead developer for outbound product: spearheaded a full-stack redesign of the [b:PostgreSQL] schema, data structures, and end-to-end Temporal workflows. Lead developer for in-app dashboard project, designing new metrics and cutting worst-case load times by [b:4x].`,
+        image: Toma,
+        link: "https://www.toma.com/",
+        year: "2026",
+        color: "8cd18e"
+    },
     {
         title: "Google Summer of Code 2025: AnkiDroid",
         description: `One of the [b:8%] of applicants admitted for the [b:Google]-sponsored [link:Summer of Code|https://summerofcode.withgoogle.com/] open-source software development program's 2025 iteration. Used [b:Kotlin] to completely re-architect the notifications system for the open-source AnkiDroid [b:Android] mobile app ([b:10M+] downloads) from the ground up.`,
@@ -20,7 +30,15 @@ const projectsData = [
         color: "94d6ff"
     },
     {
-        title: "🏆 LifeLink: 1st Place Winner at MediHacks 2024",
+        title: "Ford",
+        description: `Integrated Apple CarPlay into Ford and Lincoln in-vehicle infotainment systems via [b:Kotlin, Android]. Implemented next-generation digital experience features including device status displays, the SQLite backend for an app discovery feature, and backend navigation data APIs.`,
+        image: Ford,
+        link: "https://www.ford.com/",
+        year: "2025",
+        color: "4359e5"
+    },
+    {
+        title: "🏆 LifeLink: 1st Place Hackathon Winner",
         description: "[b:React Native] and [b:NativeWind (TailwindCSS)] mobile app to help first responders in developing countries. Integrated the [b:Nominatim API] for reverse geocoding, a [b:Google Firebase] chat system, native notifications, and the [b:Google Maps API]. Beat 450+ other contestants at a hackathon and received a $2000 award.",
         image: LifeLink,
         link: "https://devpost.com/software/lifelink-24fd3g",
@@ -28,7 +46,7 @@ const projectsData = [
         color: "ff9991"
     },
     {
-        title: "🏆 Seedpod: 1st Place Winner at Hack the Change 2023",
+        title: "🏆 Seedpod: 1st Place Hackathon Winner",
         description: "[b:NextJS] and [b:TailwindCSS] app with a [b:Python Flask] backend that communicates with modular plant pots over an ESP32. Utilized the [b:Google Maps API] and [b:Google Firebase]. Received an award of $5000 at one of the [b:University of Calgary]'s largest hackathons.",
         image: Seedpod,
         link: "https://devpost.com/software/seedpod-empowering-individual-agriculture",
@@ -45,7 +63,7 @@ const projectsData = [
     },
     {
         title: "MidSun Solar Car Design Team",
-        description: "Member of the University of Waterloo solar car design team, specifically the strategy subteam. Using [b:AWS], [b:PostgreSQL], and [b:Python] to design an irradiance database and driving optimization model.",
+        description: "Member of the University of Waterloo solar car design team, specifically the strategy subteam. Used [b:AWS], [b:PostgreSQL], and [b:Python] to design an irradiance database and driving optimization model.",
         image: MidSun,
         link: "https://www.uwmidsun.com/",
         year: "2025",
@@ -67,30 +85,30 @@ const projectsData = [
         year: "2024",
         color: "f3bdff"
     },
-    {
-        title: "🏆 RubbleRecon: 3rd Place Winner at STEMist Hacks II",
-        description: "Used [b:ReactJS] and [b:TailwindCSS] to create an app for helping first responders perform autonomous robotic search-and-rescue missions. Won 3rd place at a hackathon against 600+ other participants.",
-        image: RubbleRecon,
-        link: "https://devpost.com/software/rubblerecon",
-        year: "2023",
-        color: "7488a1"
-    },
-    {
-        title: "🏆 WaterlooDates: Runner-Up Sponsor Prize Winner at Hack the Six",
-        description: "Created a full-stack [b:NextJS + MongoDB] dating app, featuring a comedic professional twist on meeting significant others. Worked on integrating [b:Google Gemini] and AI APIs including RibbonAI for conversational interviews and VellumAI for [b:LLM tool chaining]. Won a $1000 sponsor prize in a field of 350+ contestants.",
-        image: WaterlooDates,
-        link: "https://devpost.com/software/waterloodates",
-        year: "2025",
-        color: "ffbafd"
-    },
-    {
-        title: "🏆 \"The Trees\": 3rd Place Winner at Simplihacks 2.0",
-        description: "MERN app dedicated to making environmental charity fun and accessible. Won 3rd place at a hackathon against 400+ other participants. Utilized [b:ReactJS].",
-        image: TheTrees,
-        link: "https://devpost.com/software/the-trees",
-        year: "2022",
-        color: "abffd7"
-    },
+    // {
+    //     title: "🏆 RubbleRecon: 3rd Place Winner at STEMist Hacks II",
+    //     description: "Used [b:ReactJS] and [b:TailwindCSS] to create an app for helping first responders perform autonomous robotic search-and-rescue missions. Won 3rd place at a hackathon against 600+ other participants.",
+    //     image: RubbleRecon,
+    //     link: "https://devpost.com/software/rubblerecon",
+    //     year: "2023",
+    //     color: "7488a1"
+    // },
+    // {
+    //     title: "🏆 WaterlooDates: Runner-Up Sponsor Prize Winner at Hack the Six",
+    //     description: "Created a full-stack [b:NextJS + MongoDB] dating app, featuring a comedic professional twist on meeting significant others. Worked on integrating [b:Google Gemini] and AI APIs including RibbonAI for conversational interviews and VellumAI for [b:LLM tool chaining]. Won a $1000 sponsor prize in a field of 350+ contestants.",
+    //     image: WaterlooDates,
+    //     link: "https://devpost.com/software/waterloodates",
+    //     year: "2025",
+    //     color: "ffbafd"
+    // },
+    // {
+    //     title: "🏆 \"The Trees\": 3rd Place Winner at Simplihacks 2.0",
+    //     description: "MERN app dedicated to making environmental charity fun and accessible. Won 3rd place at a hackathon against 400+ other participants. Utilized [b:ReactJS].",
+    //     image: TheTrees,
+    //     link: "https://devpost.com/software/the-trees",
+    //     year: "2022",
+    //     color: "abffd7"
+    // },
     {
         title: "Assorted Python Projects",
         description: "A published [link:significant figures|https://pypi.org/project/esoteric-sigdigs/] [i:pip] package, [link:automatic poll generators|https://github.com/ericli3690/PollProject2], a Discord [link:soccer betting bot|https://github.com/pranavUl/Soccer-Betting-Bot]...",

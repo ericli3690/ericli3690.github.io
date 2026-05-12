@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState, createRef } from 'react';
 import profilePicture from './assets/profile_picture_1.jpg'
-import profilePictureBack from './assets/SongEricYuLiZoomedIn.jpg'
+import profilePictureBack from './assets/profile_picture_1.jpg'
 import BackgroundSphere from './components/BackgroundSphere.jsx'
 import projectsData from './projects.js';
 import resumePDF from './assets/SongEricYuLiResumeApr2026.pdf';
@@ -14,11 +14,13 @@ function App() {
   const [showSmileEmoji, setShowSmileEmoji] = useState(false);
   const [activeProjectIndex, setActiveProjectIndex] = useState(null);
   const [darkMode, setDarkMode] = useState(window.location.search.substring(1).split('&').includes('light') ? false : true);
+  const [signatureAnimated, setSignatureAnimated] = useState(false);
 
   const projectsHeaderRef = useRef(null);
   const resumeHeaderRef = useRef(null);
     const contactHeaderRef = useRef(null);
   const skillsHeaderRef = useRef(null);
+  const signatureRef = useRef(null);
   
   // Create refs for each project item
   const projectRefs = useRef(projectsData.map(() => createRef()));
@@ -35,6 +37,32 @@ function App() {
     setTimeout(() => {
       setShowSmileEmoji(false);
     }, 2000);
+  };
+
+  const handleSignatureClick = () => {
+    const signatureStroke = signatureRef.current.querySelector('.signature-stroke');
+    if (signatureStroke) {
+      signatureStroke.style.transition = 'opacity 0.25s ease-out';
+      signatureStroke.style.opacity = '0';
+      
+      // After fade out, reset and restart the drawing animation
+      setTimeout(() => {
+        // Clear
+        signatureStroke.style.transition = 'none';
+        signatureStroke.style.animation = 'none';
+        // Reset
+        signatureStroke.style.opacity = '0';
+        signatureStroke.style.strokeDashoffset = '1081';
+        // Force a reflow
+        void signatureStroke.offsetHeight;
+        // Set visibility
+        signatureStroke.style.opacity = '1';
+        // Wait a tiny bit for opacity to apply
+        setTimeout(() => {
+          signatureStroke.style.animation = 'drawSignature 7s ease-out forwards';
+        }, 10);
+      }, 250);
+    }
   };
 
   useEffect(() => {
@@ -108,7 +136,38 @@ function App() {
       });
     };
   }, [activeProjectIndex]);
-  
+
+  // Signature animation intersection observer
+  useEffect(() => {
+    if (!signatureRef.current || signatureAnimated) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !signatureAnimated) {
+            const signatureStroke = signatureRef.current.querySelector('.signature-stroke');
+            if (signatureStroke) {
+              signatureStroke.style.animation = 'drawSignature 7s ease-out forwards';
+              setSignatureAnimated(true);
+            }
+          }
+        });
+      },
+      {
+        threshold: 0.5,
+        rootMargin: '0px'
+      }
+    );
+
+    observer.observe(signatureRef.current);
+
+    return () => {
+      if (signatureRef.current) {
+        observer.unobserve(signatureRef.current);
+      }
+    };
+  }, [signatureAnimated]);
+
   // Function to scroll to a specific project when its dot is clicked
   const scrollToProject = (index) => {
     if (projectRefs.current[index] && projectRefs.current[index].current) {
@@ -260,6 +319,13 @@ function App() {
             &rarr;&nbsp; linkedin.com/in/song-eric-li
             </a>
           </div>
+          <svg ref={signatureRef} className="signature" viewBox="-10 -10 75 40" fill="none" xmlns="http://www.w3.org/2000/svg" onClick={handleSignatureClick} style={{ cursor: 'pointer' }}>
+            <path
+            className="signature-stroke"
+            strokeLinecap="round"
+            d="M5.07648 8.81062C5.06782 8.81927 7.39094 8.72573 10.9226 8.37647C12.1467 8.25542 12.1368 7.72365 12.0378 7.03122C11.7983 5.35651 11.4637 2.79546 11.2981 0.55353C11.2622 0.0684358 9.96332 2.91816 8.3121 8.11497C7.45263 10.8199 6.85077 13.7537 5.85575 17.1316C4.86074 20.5096 3.56784 24.266 2.83794 26.3288C2.10805 28.3917 1.98033 28.6471 1.91183 28.5475C1.84332 28.4479 1.83789 27.9857 2.24782 26.1609C2.65776 24.3362 3.48324 21.163 4.42992 18.1856C5.3766 15.2083 6.41947 12.5229 5.90929 12.4373C2.34168 11.8387 0.843677 17.8475 0.70211 17.7656C-0.512028 17.0635 4.02093 13.7195 6.89433 10.7919C7.84258 9.8258 7.96623 10.133 7.9226 10.9731C7.71074 15.0521 7.64337 15.951 7.86356 16.2191C8.16966 16.5918 9.30154 15.2996 10.7453 13.0992C11.6255 11.7577 12.4932 9.76715 13.594 7.82156C14.6948 5.87597 15.9224 3.98644 16.5329 3.13518C17.1434 2.28392 17.0994 2.52818 16.8713 3.00073C15.4237 5.99976 13.5856 7.92742 13.9813 7.49187C15.7251 5.57262 17.0342 3.67383 17.6055 3.33454C18.0356 3.07916 18.1553 4.9534 18.4657 6.8824C18.5262 7.25864 19.2871 7.07035 19.9166 6.76562C21.3405 6.07635 22.7345 4.12668 23.7526 2.25952C24.0816 1.65617 23.7677 1.6261 23.3981 1.83041C22.4799 2.33802 21.1319 3.92014 19.5696 5.84046C18.4359 7.23397 17.9887 8.52098 17.3298 9.84918C16.3845 11.7545 15.3466 13.4547 14.7136 14.7976C14.0745 16.1537 13.2134 17.7721 12.1199 20.0781C9.48833 25.6277 7.56497 27.0045 7.24161 27.4397C7.08263 27.6537 8.36342 25.6559 10.3555 23.1666C12.5526 20.421 14.4194 19.1615 14.7592 19.274C17.2819 20.1089 13.1917 24.3499 13.2919 25.1876C13.7743 29.2194 20.2667 18.7317 20.5806 18.6589C20.9384 18.576 19.2419 22.0392 16.78 26.3893C15.9063 27.933 15.8162 28.1407 15.8651 28.1562C16.7633 28.4409 17.8035 25.3143 20.1285 21.3354C21.5695 18.8691 23.9115 15.721 25.6238 13.5269C27.3362 11.3327 28.4426 10.2456 29.469 9.36387C30.4954 8.48212 31.4082 7.83864 32.9699 6.98219C36.654 4.96172 39.3686 3.88617 39.8538 3.94353C40.0362 3.96508 39.6762 4.55061 36.7985 5.61233C33.9207 6.67406 28.4307 8.34232 23.9123 9.40175C19.394 10.4612 16.0136 10.8612 19.9638 10.5033C23.914 10.1454 35.2971 9.01741 41.9727 8.46575C48.6483 7.91409 50.2713 7.97291 43.4166 9.49556C36.5619 11.0182 21.1802 14.0029 13.1261 15.5932C5.07196 17.1834 4.81148 17.2889 9.4153 16.6552C14.0191 16.0215 23.4951 14.6455 30.1608 13.937C36.8266 13.2285 40.3948 13.2291 42.6169 13.2817C44.8389 13.3342 45.6065 13.4385 46.1043 13.5292C46.6021 13.6198 46.8068 13.6937 46.1166 13.9568C45.4265 14.22 43.8353 14.6702 39.5297 15.3818C35.2241 16.0933 28.2523 17.0525 22.8517 18.0121C17.4511 18.9716 13.833 19.9024 12.8275 20.1338C11.822 20.3653 13.5388 19.8692 17.5099 19.2185C21.481 18.5677 27.6545 17.7773 31.382 17.4442C36.1883 17.0148 37.6204 17.4923 37.9144 17.7066C38.0229 17.7857 37.6323 18.0264 35.0917 19.0425C32.5511 20.0585 27.7658 21.8994 24.5572 23.256C21.3485 24.6126 19.8615 25.4292 19.3803 25.7959C19.1629 25.9616 21.4525 25.2949 24.4096 24.0263C27.585 22.664 30.8867 22.0831 33.7304 22.0129C36.2482 21.9507 38.0461 23.4507 39.6224 24.5706C41.4086 25.8397 43.5562 25.584 45.3974 25.3893C48.1731 25.0957 51.2681 23.7409 54.7523 22.3674C56.7407 21.7356 59.1763 21.2364 60.6456 20.9631C62.1148 20.6898 62.5439 20.6575 62.9859 20.6242"
+            />
+          </svg>
         </div>
         <div className="footer-container">
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', justifyContent: 'center' }}>
